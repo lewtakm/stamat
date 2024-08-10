@@ -1,4 +1,5 @@
 "use client";
+import { ROUTES } from "@/routes";
 import { signOut, useSession } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -26,7 +27,7 @@ const Home = () => {
     } else {
       return (
         <Link
-          href="/login"
+          href={ROUTES.login}
           className="border border-solid border-black rounded"
         >
           Sign In

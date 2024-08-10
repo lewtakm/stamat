@@ -43,7 +43,7 @@ const Login = () => {
       setError(res.error as string);
     }
     if (res?.ok) {
-      return router.push("/");
+      return router.push(ROUTES.user);
     }
   };
 
