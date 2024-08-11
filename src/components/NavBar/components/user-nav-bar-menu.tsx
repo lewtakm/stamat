@@ -3,7 +3,6 @@
 import { ROUTES } from "@/routes";
 import { signOut, useSession } from "next-auth/react";
 import {
-  NavbarContent,
   NavbarItem,
   Link,
   DropdownItem,
