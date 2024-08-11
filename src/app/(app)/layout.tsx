@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
-import { Providers } from "./providers";
-import "./globals.css";
+import { Providers } from "../../providers";
 import { ReactNode } from "react";
-import { ThemeToggle } from "@/components";
+import { NavBar } from "@/components";
+import "../globals.css";
 
 export const metadata: Metadata = {
   title: "StaMat",
-  description: "Cwićz matematyke",
+  description: "Ćwicz matematykę",
 };
 
 const RootLayout = ({
@@ -17,7 +17,7 @@ const RootLayout = ({
   <html lang="en">
     <body>
       <Providers>
-        <ThemeToggle />
+        <NavBar />
         {children}
       </Providers>
     </body>

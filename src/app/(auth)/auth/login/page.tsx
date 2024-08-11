@@ -39,9 +39,16 @@ const Login = () => {
       password,
       redirect: false,
     });
+    console.log("res?.status", res?.status);
     if (res?.error) {
       setError(res.error as string);
     }
+
+    if (res?.status === 401) {
+      setError("Błedne dane logowania.");
+      return;
+    }
+
     if (res?.ok) {
       return router.push(ROUTES.user);
     }

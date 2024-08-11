@@ -10,9 +10,11 @@ type Props = {
 };
 
 export const Providers = ({ children }: Props) => (
-  <NextUIProvider>
-    <NextThemesProvider attribute="class" defaultTheme="dark">
-      <SessionProvider>{children}</SessionProvider>
-    </NextThemesProvider>
-  </NextUIProvider>
+  <SessionProvider>
+    <NextUIProvider>
+      <NextThemesProvider attribute="class" defaultTheme="dark">
+        {children}
+      </NextThemesProvider>
+    </NextUIProvider>
+  </SessionProvider>
 );
