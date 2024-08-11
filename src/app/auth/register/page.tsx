@@ -95,13 +95,16 @@ const Register = () => {
             errorMessage={errors.confirmPassword?.message}
             {...register("confirmPassword")}
           />
-          <Checkbox isRequired>Akceptuje regulamin</Checkbox>
-          <Button
-            type="submit"
-            color="primary"
-            className="w-full"
+          <Checkbox
+            isRequired
+            isInvalid={Boolean(errors.tos)}
+            className="w-full max-w-full"
             {...register("tos")}
           >
+            Akceptuje <Link href="#">regulamin</Link> oraz{" "}
+            <Link href="#">polityke prywatności</Link>.
+          </Checkbox>
+          <Button type="submit" color="primary" className="w-full">
             Stwórz konto
           </Button>
         </form>

@@ -3,7 +3,7 @@ import { ComponentProps } from "react";
 
 export const Link = (props: ComponentProps<typeof NextLink>) => (
   <NextLink
-    className="text-sm text-blue-700 dark:text-white transition duration-150 ease hover:text-blue-900"
+    className="text-sm text-blue-400 font-bold  transition duration-150 ease hover:text-blue-600"
     {...props}
   />
 );

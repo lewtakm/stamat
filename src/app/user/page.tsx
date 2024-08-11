@@ -1,5 +1,8 @@
+import { useSession } from "next-auth/react";
+
 const UserPage = () => {
-  return <div>Zalogowany</div>;
+  const { data } = useSession();
+  return <div>Zalogowany jako {data?.user?.email}</div>;
 };
 
 export default UserPage;

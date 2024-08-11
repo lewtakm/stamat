@@ -71,7 +71,7 @@ const Login = () => {
           />
           <Input
             isRequired
-            type="text"
+            type="password"
             label="Hasło"
             labelPlacement="outside"
             placeholder="Wpisz hasło"
