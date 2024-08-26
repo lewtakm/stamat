@@ -2,7 +2,7 @@ import { Card } from "@nextui-org/react";
 import Image from "next/image";
 import { ReactNode } from "react";
 import { Providers } from "../../providers";
-import "../globals.css";
+import "../../css/globals.css";
 
 const RootLayout = ({ children }: { children: ReactNode }) => (
   <html lang="en">

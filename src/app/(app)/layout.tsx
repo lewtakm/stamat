@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import { Providers } from "../../providers";
 import { ReactNode } from "react";
-import { NavBar } from "@/components";
-import "../globals.css";
+import "../../css/globals.css";
 
 export const metadata: Metadata = {
   title: "StaMat",
@@ -14,11 +13,10 @@ const RootLayout = ({
 }: Readonly<{
   children: ReactNode;
 }>) => (
-  <html lang="en">
+  <html lang="pl">
     <body>
       <Providers>
-        <NavBar />
-        {children}
+        <div className="dark:bg-boxdark-2 dark:text-bodydark">{children}</div>
       </Providers>
     </body>
   </html>
