@@ -49,72 +49,7 @@ const Register = () => {
     }
   };
 
-  return (
-    <>
-      <CardHeader>
-        <h1 className="mb-5 w-full text-2xl font-bold">Stwórz konto</h1>
-      </CardHeader>
-      <Divider />
-      <CardBody>
-        <form
-          onSubmit={handleSubmit(onSubmit)}
-          className="flex flex-col justify-between items-center gap-4"
-        >
-          <Input
-            isRequired
-            type="email"
-            label="E-mail"
-            labelPlacement="outside"
-            placeholder="Wpisz adres e-mail"
-            autoComplete="email"
-            isInvalid={Boolean(errors.email)}
-            errorMessage={errors.email?.message}
-            {...register("email")}
-          />
-
-          <Input
-            isRequired
-            type="password"
-            label="Hasło"
-            labelPlacement="outside"
-            placeholder="Wpisz hasło"
-            autoComplete="password"
-            isInvalid={Boolean(errors.password)}
-            errorMessage={errors.password?.message}
-            {...register("password")}
-          />
-
-          <Input
-            type="password"
-            label="Powtórz hasło"
-            isRequired
-            labelPlacement="outside"
-            placeholder="Wpisz hasło ponownie"
-            autoComplete="password"
-            isInvalid={Boolean(errors.confirmPassword)}
-            errorMessage={errors.confirmPassword?.message}
-            {...register("confirmPassword")}
-          />
-          <Checkbox
-            isRequired
-            isInvalid={Boolean(errors.tos)}
-            className="w-full max-w-full"
-            {...register("tos")}
-          >
-            Akceptuje <Link href="#">regulamin</Link> oraz{" "}
-            <Link href="#">polityke prywatności</Link>.
-          </Checkbox>
-          <Button type="submit" color="primary" className="w-full">
-            Stwórz konto
-          </Button>
-        </form>
-      </CardBody>
-
-      <CardFooter>
-        <Link href={ROUTES.login}>Masz już konto? Zaloguj się.</Link>
-      </CardFooter>
-    </>
-  );
+  return <>Register</>;
 };
 
 export default Register;
