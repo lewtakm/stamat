@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Providers } from "../../providers";
 import { ReactNode } from "react";
 import "../../css/globals.css";
+import { DefaultLayout } from "@/layouts";
 
 export const metadata: Metadata = {
   title: "StaMat",
@@ -16,7 +17,9 @@ const RootLayout = ({
   <html lang="pl">
     <body>
       <Providers>
-        <div className="dark:bg-boxdark-2 dark:text-bodydark">{children}</div>
+        <div className="dark:bg-boxdark-2 dark:text-bodydark">
+          <DefaultLayout>{children}</DefaultLayout>
+        </div>
       </Providers>
     </body>
   </html>

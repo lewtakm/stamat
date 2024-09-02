@@ -7,6 +7,8 @@ export interface UserDocument {
   name: string;
   phone: string;
   image: string;
+  accountType: number;
+  verified: number;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -26,10 +28,18 @@ const UserSchema = new Schema<UserDocument>(
       type: String,
       required: true,
     },
-    // name: {
-    //   type: String,
-    //   required: [true, "Login jest wymagany."],
-    // },
+    name: {
+      type: String,
+      required: [true, "Imię i nazwisko jest wymagane."],
+    },
+    accountType: {
+      type: Number,
+      default: 1,
+    },
+    verified: {
+      type: Number,
+      default: 0,
+    },
   },
   {
     timestamps: true,

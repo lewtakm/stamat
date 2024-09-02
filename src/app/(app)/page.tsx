@@ -1,6 +1,5 @@
 "use client";
 
-import DefaultLayout from "@/components/Layouts/DefaultLayout";
 import { ROUTES } from "@/routes";
 import { signOut, useSession } from "next-auth/react";
 import Link from "next/link";
@@ -37,7 +36,8 @@ const Home = () => {
       );
     }
   };
-  return <DefaultLayout>LLL</DefaultLayout>;
+
+  return <>{showSession()}</>;
 };
 
 export default Home;

@@ -2,7 +2,11 @@
 import { useState, ReactNode } from "react";
 import { Header, Sidebar } from "@/components";
 
-export default function DefaultLayout({ children }: { children: ReactNode }) {
+interface DefaultLayoutProps {
+  children: ReactNode;
+}
+
+export const DefaultLayout = ({ children }: DefaultLayoutProps) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   return (
     <>
@@ -20,7 +24,7 @@ export default function DefaultLayout({ children }: { children: ReactNode }) {
 
           {/* <!-- ===== Main Content Start ===== --> */}
           <main>
-            <div className="mx-auto h-full max-w-screen-2xl p-4 md:p-6 2xl:p-10">
+            <div className="mx-auto h-screen max-w-screen-2xl p-4 md:p-6 2xl:p-10">
               {children}
             </div>
           </main>
@@ -31,4 +35,4 @@ export default function DefaultLayout({ children }: { children: ReactNode }) {
       {/* <!-- ===== Page Wrapper End ===== --> */}
     </>
   );
-}
+};
