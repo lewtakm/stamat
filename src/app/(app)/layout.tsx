@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Providers } from "../../providers";
 import { ReactNode } from "react";
-import "../../css/globals.css";
 import { DefaultLayout } from "@/layouts";
+import "../../css/globals.css";
 
 export const metadata: Metadata = {
   title: "StaMat",

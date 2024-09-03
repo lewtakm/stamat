@@ -37,6 +37,7 @@ export const DropdownUser = () => {
               height: "auto",
             }}
             alt="User"
+            className="rounded-full"
           />
         </span>
 
@@ -65,7 +66,7 @@ export const DropdownUser = () => {
           <ul className="flex flex-col gap-5 border-b border-stroke px-6 py-7.5 dark:border-strokedark">
             <li>
               <Link
-                href="#"
+                href={ROUTES.userProfile}
                 className="flex items-center gap-3.5 text-sm font-medium duration-300 ease-in-out hover:text-primary lg:text-base"
               >
                 <svg
@@ -88,7 +89,7 @@ export const DropdownUser = () => {
                 Mój Profil
               </Link>
             </li>
-            <li>
+            {/* <li>
               <Link
                 href="#"
                 className="flex items-center gap-3.5 text-sm font-medium duration-300 ease-in-out hover:text-primary lg:text-base"
@@ -108,7 +109,7 @@ export const DropdownUser = () => {
                 </svg>
                 Kontakty
               </Link>
-            </li>
+            </li> */}
             <li>
               <Link
                 href="#"

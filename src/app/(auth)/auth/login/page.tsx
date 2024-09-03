@@ -2,11 +2,12 @@
 import { useState } from "react";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import { Alert, Input, Link } from "@/components";
+import { Alert, Input } from "@/components";
 import { ROUTES } from "@/routes";
 import { loginSchema } from "@/schemas";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm, SubmitHandler } from "react-hook-form";
+import Link from "next/link";
 
 type LoginInputs = {
   email: string;
@@ -44,7 +45,7 @@ const Login = () => {
     }
 
     if (res?.ok) {
-      return router.push(ROUTES.user);
+      return router.push(ROUTES.userProfile);
     }
   };
 
