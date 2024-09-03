@@ -1,16 +1,6 @@
 "use client";
 import { useRouter } from "next/navigation";
 import { register as registerUser } from "@/actions/register";
-import { Input } from "@nextui-org/input";
-import { Button } from "@nextui-org/button";
-import {
-  CardHeader,
-  CardBody,
-  CardFooter,
-  Divider,
-  Checkbox,
-} from "@nextui-org/react";
-import { Link } from "@/components";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { ROUTES } from "@/routes";
 import { registrationSchema } from "@/schemas";

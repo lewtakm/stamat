@@ -1,10 +1,9 @@
-import { Card } from "@nextui-org/react";
 import Image from "next/image";
 import { ReactNode } from "react";
 import { Providers } from "../../providers";
-import "../../css/globals.css";
 import Link from "next/link";
 import { Metadata } from "next";
+import "../../css/globals.css";
 
 export const metadata: Metadata = {
   title: "StaMat",
