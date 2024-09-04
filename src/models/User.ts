@@ -1,4 +1,28 @@
-import mongoose, { model, Schema } from "mongoose";
+import mongoose, { Schema, model } from "mongoose";
+
+const UserSchema = new Schema<UserDocument>(
+  {
+    accountType: { default: 1, type: Number },
+    email: {
+      match: [
+        /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
+        "Adres e-mail nie prawidłowy.",
+      ],
+      required: [true, "E-mail jest wymagany."],
+      type: String,
+      unique: true,
+    },
+    name: { required: [true, "Imię i nazwisko jest wymagane."], type: String },
+    password: { required: true, type: String },
+    verified: { default: 0, type: Number },
+  },
+  {
+    timestamps: true,
+  }
+);
+
+export const User =
+  mongoose.models?.User || model<UserDocument>("User", UserSchema);
 
 export interface UserDocument {
   _id: string;
@@ -12,39 +36,3 @@ export interface UserDocument {
   createdAt: Date;
   updatedAt: Date;
 }
-
-const UserSchema = new Schema<UserDocument>(
-  {
-    email: {
-      type: String,
-      unique: true,
-      required: [true, "E-mail jest wymagany."],
-      match: [
-        /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
-        "Adres e-mail nie prawidłowy.",
-      ],
-    },
-    password: {
-      type: String,
-      required: true,
-    },
-    name: {
-      type: String,
-      required: [true, "Imię i nazwisko jest wymagane."],
-    },
-    accountType: {
-      type: Number,
-      default: 1,
-    },
-    verified: {
-      type: Number,
-      default: 0,
-    },
-  },
-  {
-    timestamps: true,
-  }
-);
-
-export const User =
-  mongoose.models?.User || model<UserDocument>("User", UserSchema);

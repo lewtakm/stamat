@@ -1,9 +1,37 @@
-import mongoose, { model, Schema } from "mongoose";
+import mongoose, { Schema, model } from "mongoose";
 
-export interface SubQuestionDocument {
-  question: string;
-  maxPoints: number;
-}
+const QuestionSchema = new Schema<QuestionDocument>(
+  {
+    category: { required: [true, "Kategoria jest wymagana."], type: String },
+    level: { required: [true, "Kategoria jest wymagana."], type: Number },
+    maxPoints: {
+      required: [true, "Maksymalna liczba punktów jest wymagana."],
+      type: Number,
+    },
+    question: {
+      required: [true, "Treść pytania jest wymagana."],
+      type: String,
+    },
+    scheme: {
+      type: String,
+    },
+    subQuestions: [
+      {
+        type: String,
+      },
+    ],
+    videoSolution: {
+      type: String,
+    },
+  },
+  {
+    timestamps: true,
+  }
+);
+
+export const Question =
+  mongoose.models?.Question ||
+  model<QuestionDocument>("Question", QuestionSchema);
 
 export interface QuestionDocument {
   _id: string;
@@ -18,41 +46,7 @@ export interface QuestionDocument {
   updatedAt: Date;
 }
 
-const QuestionSchema = new Schema<QuestionDocument>(
-  {
-    category: {
-      type: String,
-      required: [true, "Kategoria jest wymagana."],
-    },
-    level: {
-      type: Number,
-      required: [true, "Kategoria jest wymagana."],
-    },
-    maxPoints: {
-      type: Number,
-      required: [true, "Maksymalna liczba punktów jest wymagana."],
-    },
-    videoSolution: {
-      type: String,
-    },
-    scheme: {
-      type: String,
-    },
-    question: {
-      type: String,
-      required: [true, "Treść pytania jest wymagana."],
-    },
-    subQuestions: [
-      {
-        type: String,
-      },
-    ],
-  },
-  {
-    timestamps: true,
-  }
-);
-
-export const Question =
-  mongoose.models?.Question ||
-  model<QuestionDocument>("Question", QuestionSchema);
+export interface SubQuestionDocument {
+  question: string;
+  maxPoints: number;
+}

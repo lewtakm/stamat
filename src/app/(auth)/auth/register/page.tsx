@@ -29,7 +29,7 @@ const Register = () => {
 
   const onSubmit: SubmitHandler<RegisterInputs> = async (data) => {
     const { email, password, name } = data;
-    console.log("res", response);
+
     const response = await registerUser({
       email,
       name,
