@@ -29,8 +29,4 @@ export const registrationSchema = yup.object().shape({
   email,
   name: yup.string().required("Wpisz imie i nazwisko."),
   password,
-  tos: yup
-    .bool()
-    .oneOf([true], "Musisz zaakceptować regulamin.")
-    .required("Musisz zaakceptować regulamin."),
 });

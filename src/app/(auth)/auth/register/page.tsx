@@ -13,7 +13,6 @@ type RegisterInputs = {
   email: string;
   password: string;
   confirmPassword: string;
-  tos: boolean;
   name: string;
 };
 
@@ -37,7 +36,7 @@ const Register = () => {
     });
 
     console.log(response);
-    if (response?.error) {
+    if (response?.error.email) {
       setError("email", { message: response.error.email });
       return;
     } else {
@@ -57,7 +56,7 @@ const Register = () => {
           <div className="mb-4">
             <Input
               autoComplete="name"
-              errorMessage={errors.email?.message}
+              errorMessage={errors.name?.message}
               icon={
                 <svg
                   className="fill-current"
