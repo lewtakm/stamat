@@ -22,12 +22,12 @@ export const register = async (values: any) => {
     const hashedPassword = await bcrypt.hash(password, 10);
 
     const user = new User({
-      name,
       email,
+      name,
       password: hashedPassword,
     });
 
-    const savedUser = await user.save();
+    await user.save();
   } catch (e) {
     console.log(e);
   }

@@ -8,8 +8,8 @@ import { redirect } from "next/navigation";
 import { ROUTES } from "@/routes";
 
 export const metadata: Metadata = {
-  title: "StaMat",
   description: "Ćwicz matematykę",
+  title: "StaMat",
 };
 
 const RootLayout = async ({ children }: { children: ReactNode }) => {
@@ -30,18 +30,18 @@ const RootLayout = async ({ children }: { children: ReactNode }) => {
                   <div className="px-26 py-17.5 text-center">
                     <Link className="mb-5.5 inline-block" href="/">
                       <Image
-                        className="hidden dark:block"
-                        src="/assets/images/logo/logo-light.svg"
                         alt="Logo"
-                        width={176}
+                        className="hidden dark:block"
                         height={32}
+                        src="/assets/images/logo/logo-light.svg"
+                        width={176}
                       />
                       <Image
-                        className="dark:hidden"
-                        src="/assets/images/logo/logo-dark.svg"
                         alt="Logo"
-                        width={176}
+                        className="dark:hidden"
                         height={32}
+                        src="/assets/images/logo/logo-dark.svg"
+                        width={176}
                       />
                     </Link>
 
@@ -52,10 +52,10 @@ const RootLayout = async ({ children }: { children: ReactNode }) => {
 
                     <span className="mt-15 inline-block">
                       <svg
-                        width="350"
+                        fill="none"
                         height="350"
                         viewBox="0 0 350 350"
-                        fill="none"
+                        width="350"
                         xmlns="http://www.w3.org/2000/svg"
                       >
                         <path

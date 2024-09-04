@@ -27,6 +27,7 @@ export const registrationSchema = yup.object().shape({
     .oneOf([yup.ref("password")], "Hasła muszą być takie same. ")
     .required("Potwierdź hasło."),
   email,
+  name: yup.string().required("Wpisz imie i nazwisko."),
   password,
   tos: yup
     .bool()
