@@ -19,9 +19,9 @@ const Login = () => {
   const [error, setError] = useState("");
   const router = useRouter();
   const {
-    register,
-    handleSubmit,
     formState: { errors },
+    handleSubmit,
+    register,
   } = useForm<LoginInputs>({
     mode: "onBlur",
     resolver: yupResolver(loginSchema),

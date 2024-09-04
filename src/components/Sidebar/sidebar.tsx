@@ -154,7 +154,7 @@ const menuGroups = [
   },
 ];
 
-export const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
+export const Sidebar = ({ setSidebarOpen, sidebarOpen }: SidebarProps) => {
   const pathname = usePathname();
   const [pageName, setPageName] = useLocalStorage("selectedMenu", "dashboard");
 

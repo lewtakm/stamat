@@ -73,9 +73,9 @@ const elementsBasedOnAlertType = {
 } as const;
 
 export const Alert = (props: AlertProps) => {
-  const { title, description, type } = props;
+  const { description, title, type } = props;
 
-  const { icon, classes } = elementsBasedOnAlertType[type];
+  const { classes, icon } = elementsBasedOnAlertType[type];
 
   return (
     <div

@@ -10,12 +10,12 @@ import { ROUTES } from "@/routes";
 import { Session } from "next-auth";
 
 interface HeaderProps {
-  sidebarOpen: string | boolean | undefined;
-  setSidebarOpen: (arg0: boolean) => void;
   userData: Session | null;
+  setSidebarOpen: (arg0: boolean) => void;
+  sidebarOpen: string | boolean | undefined;
 }
 export const Header = (props: HeaderProps) => {
-  const { sidebarOpen, setSidebarOpen, userData } = props;
+  const { setSidebarOpen, sidebarOpen, userData } = props;
 
   return (
     <header className="sticky top-0 z-999 flex w-full bg-white drop-shadow-1 dark:bg-boxdark dark:drop-shadow-none">

@@ -3,17 +3,17 @@
 import { ReactNode, RefObject, useEffect, useRef } from "react";
 
 interface Props {
-  children: ReactNode;
-  exceptionRef?: RefObject<HTMLElement>;
-  onClick: () => void;
   className?: string;
+  children: ReactNode;
+  onClick: () => void;
+  exceptionRef?: RefObject<HTMLElement>;
 }
 
 export const ClickOutside = ({
   children,
+  className,
   exceptionRef,
   onClick,
-  className,
 }: Props) => {
   const wrapperRef = useRef<HTMLDivElement>(null);
 

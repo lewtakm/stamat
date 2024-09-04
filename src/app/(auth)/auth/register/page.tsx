@@ -20,15 +20,15 @@ type RegisterInputs = {
 const Register = () => {
   const router = useRouter();
   const {
-    register,
-    handleSubmit,
-    setError,
-    reset,
     formState: { errors },
+    handleSubmit,
+    register,
+    reset,
+    setError,
   } = useForm<RegisterInputs>({ resolver: yupResolver(registrationSchema) });
 
   const onSubmit: SubmitHandler<RegisterInputs> = async (data) => {
-    const { email, password, name } = data;
+    const { email, name, password } = data;
 
     const response = await registerUser({
       email,

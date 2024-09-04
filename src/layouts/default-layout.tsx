@@ -4,11 +4,11 @@ import { Header, Sidebar } from "@/components";
 import { Session } from "next-auth";
 
 interface DefaultLayoutProps {
-  userData: Session | null;
   children: ReactNode;
+  userData: Session | null;
 }
 
-export const DefaultLayout = ({ userData, children }: DefaultLayoutProps) => {
+export const DefaultLayout = ({ children, userData }: DefaultLayoutProps) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   return (
     <>

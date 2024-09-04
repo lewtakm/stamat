@@ -5,7 +5,7 @@ import { User } from "@/models";
 import bcrypt from "bcryptjs";
 
 export const register = async (values: any) => {
-  const { email, password, name } = values;
+  const { email, name, password } = values;
 
   try {
     await connectDB();

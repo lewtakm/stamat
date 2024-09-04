@@ -1,10 +1,19 @@
 {
   "extends": "next/core-web-vitals",
-  "plugins": ["sort-exports"],
+  "plugins": ["perfectionist"],
   "rules": {
     "react/jsx-sort-props": 2,
     "sort-keys": 2,
     "sort-imports": ["error", {"ignoreDeclarationSort": true}],
-    "sort-exports/sort-exports": ["error", { "sortDir": "asc" }]
+    "perfectionist/sort-objects": ["error", {
+      "type": "alphabetical"
+    }],
+    "perfectionist/sort-interfaces": ["error"]
+  },
+    "settings": {
+    "perfectionist": {
+      "type": "line-length",
+      "partitionByComment": true
+    }
   }
 }

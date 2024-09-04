@@ -35,15 +35,15 @@ export const Question =
 
 export interface QuestionDocument {
   _id: string;
-  category: string;
   level: number;
-  maxPoints: number;
-  videoSolution: string;
   scheme: string;
-  question: string;
-  subQuestions: Array<string>;
   createdAt: Date;
   updatedAt: Date;
+  category: string;
+  question: string;
+  maxPoints: number;
+  videoSolution: string;
+  subQuestions: Array<string>;
 }
 
 export interface SubQuestionDocument {

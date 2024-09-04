@@ -26,13 +26,13 @@ export const User =
 
 export interface UserDocument {
   _id: string;
-  email: string;
-  password: string;
   name: string;
+  email: string;
   phone: string;
   image: string;
-  accountType: number;
-  verified: number;
   createdAt: Date;
   updatedAt: Date;
+  password: string;
+  verified: number;
+  accountType: number;
 }
