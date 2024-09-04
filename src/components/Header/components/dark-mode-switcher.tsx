@@ -11,13 +11,13 @@ export const DarkModeSwitcher = () => {
         }`}
       >
         <input
-          type="checkbox"
+          className="dur absolute top-0 z-50 m-0 h-full w-full cursor-pointer opacity-0"
           onChange={() => {
             if (typeof setColorMode === "function") {
               setColorMode(colorMode === "light" ? "dark" : "light");
             }
           }}
-          className="dur absolute top-0 z-50 m-0 h-full w-full cursor-pointer opacity-0"
+          type="checkbox"
         />
         <span
           className={`absolute left-[3px] top-1/2 flex h-6 w-6 -translate-y-1/2 translate-x-0 items-center justify-center rounded-full bg-white shadow-switcher duration-75 ease-linear ${
@@ -26,10 +26,10 @@ export const DarkModeSwitcher = () => {
         >
           <span className="dark:hidden">
             <svg
-              width="16"
+              fill="none"
               height="16"
               viewBox="0 0 16 16"
-              fill="none"
+              width="16"
               xmlns="http://www.w3.org/2000/svg"
             >
               <path
@@ -44,10 +44,10 @@ export const DarkModeSwitcher = () => {
           </span>
           <span className="hidden dark:inline-block">
             <svg
-              width="16"
+              fill="none"
               height="16"
               viewBox="0 0 16 16"
-              fill="none"
+              width="16"
               xmlns="http://www.w3.org/2000/svg"
             >
               <path

@@ -6,13 +6,16 @@ interface AlertProps {
 
 const elementsBasedOnAlertType = {
   error: {
+    classes: {
+      container: "border-[#F87171] bg-[#F87171] dark:bg-[#1B1B24]",
+    },
     icon: (
       <div className="mr-5 flex h-9 w-full max-w-[36px] items-center justify-center rounded-lg bg-[#F87171]">
         <svg
-          width="13"
+          fill="none"
           height="13"
           viewBox="0 0 13 13"
-          fill="none"
+          width="13"
           xmlns="http://www.w3.org/2000/svg"
         >
           <path
@@ -23,18 +26,18 @@ const elementsBasedOnAlertType = {
         </svg>
       </div>
     ),
-    classes: {
-      container: "border-[#F87171] bg-[#F87171] dark:bg-[#1B1B24]",
-    },
   },
   success: {
+    classes: {
+      container: "border-[#34D399] bg-[#34D399] dark:bg-[#1B1B24]",
+    },
     icon: (
       <div className="mr-5 flex h-9 w-full max-w-[36px] items-center justify-center rounded-lg bg-[#34D399]">
         <svg
-          width="16"
+          fill="none"
           height="12"
           viewBox="0 0 16 12"
-          fill="none"
+          width="16"
           xmlns="http://www.w3.org/2000/svg"
         >
           <path
@@ -45,18 +48,18 @@ const elementsBasedOnAlertType = {
         </svg>
       </div>
     ),
-    classes: {
-      container: "border-[#34D399] bg-[#34D399] dark:bg-[#1B1B24]",
-    },
   },
   warning: {
+    classes: {
+      container: "border-[#F87171] bg-[#F87171] dark:bg-[#1B1B24]",
+    },
     icon: (
       <div className="mr-5 flex h-9 w-9 items-center justify-center rounded-lg bg-warning bg-opacity-30">
         <svg
-          width="19"
+          fill="none"
           height="16"
           viewBox="0 0 19 16"
-          fill="none"
+          width="19"
           xmlns="http://www.w3.org/2000/svg"
         >
           <path
@@ -66,9 +69,6 @@ const elementsBasedOnAlertType = {
         </svg>
       </div>
     ),
-    classes: {
-      container: "border-[#F87171] bg-[#F87171] dark:bg-[#1B1B24]",
-    },
   },
 } as const;
 

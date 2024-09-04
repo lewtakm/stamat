@@ -1,4 +1,5 @@
 "use client";
+
 import { useState } from "react";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
@@ -6,7 +7,7 @@ import { Alert, Input } from "@/components";
 import { ROUTES } from "@/routes";
 import { loginSchema } from "@/schemas";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useForm, SubmitHandler } from "react-hook-form";
+import { SubmitHandler, useForm } from "react-hook-form";
 import Link from "next/link";
 
 type LoginInputs = {
@@ -59,20 +60,15 @@ const Login = () => {
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="mb-4">
             <Input
-              isRequired
-              type="email"
-              label="E-mail"
-              placeholder="Wpisz adres e-mail"
               autoComplete="email"
-              isInvalid={Boolean(errors.email)}
               errorMessage={errors.email?.message}
               icon={
                 <svg
                   className="fill-current"
-                  width="22"
+                  fill="none"
                   height="22"
                   viewBox="0 0 22 22"
-                  fill="none"
+                  width="22"
                   xmlns="http://www.w3.org/2000/svg"
                 >
                   <g opacity="0.5">
@@ -83,6 +79,11 @@ const Login = () => {
                   </g>
                 </svg>
               }
+              isInvalid={Boolean(errors.email)}
+              isRequired
+              label="E-mail"
+              placeholder="Wpisz adres e-mail"
+              type="email"
               {...register("email")}
             />
           </div>
@@ -92,18 +93,15 @@ const Login = () => {
               isRequired
               label="Hasło"
               {...register("password")}
-              placeholder="Wpisz hasło"
               autoComplete="password"
-              type="password"
-              isInvalid={Boolean(errors.password)}
               errorMessage={errors.password?.message}
               icon={
                 <svg
                   className="fill-current"
-                  width="22"
+                  fill="none"
                   height="22"
                   viewBox="0 0 22 22"
-                  fill="none"
+                  width="22"
                   xmlns="http://www.w3.org/2000/svg"
                 >
                   <g opacity="0.5">
@@ -118,34 +116,37 @@ const Login = () => {
                   </g>
                 </svg>
               }
+              isInvalid={Boolean(errors.password)}
+              placeholder="Wpisz hasło"
+              type="password"
             />
           </div>
 
           {error ? (
             <div className="mb-6">
-              <Alert type="error" title="Błedne dane logowania."></Alert>
+              <Alert title="Błedne dane logowania." type="error"></Alert>
             </div>
           ) : null}
 
           <div className="mb-5">
             <input
+              className="w-full cursor-pointer rounded-lg border border-primary bg-primary p-4 text-white transition hover:bg-opacity-90"
               type="submit"
               value="Zaloguj"
-              className="w-full cursor-pointer rounded-lg border border-primary bg-primary p-4 text-white transition hover:bg-opacity-90"
             />
           </div>
 
           <button
-            type="submit"
             className="flex w-full items-center justify-center gap-3.5 rounded-lg border border-stroke bg-gray p-4 hover:bg-opacity-50 dark:border-strokedark dark:bg-meta-4 dark:hover:bg-opacity-50"
             disabled
+            type="submit"
           >
             <span>
               <svg
-                width="20"
+                fill="none"
                 height="20"
                 viewBox="0 0 20 20"
-                fill="none"
+                width="20"
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <g clipPath="url(#clip0_191_13499)">
@@ -168,7 +169,7 @@ const Login = () => {
                 </g>
                 <defs>
                   <clipPath id="clip0_191_13499">
-                    <rect width="20" height="20" fill="white" />
+                    <rect fill="white" height="20" width="20" />
                   </clipPath>
                 </defs>
               </svg>
@@ -179,7 +180,7 @@ const Login = () => {
           <div className="mt-6 text-center">
             <p>
               Nie masz konta?{" "}
-              <Link href={ROUTES.register} className="text-primary">
+              <Link className="text-primary" href={ROUTES.register}>
                 Zarejestruj się.
               </Link>
             </p>

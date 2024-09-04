@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useEffect, RefObject, ReactNode } from "react";
+import { ReactNode, RefObject, useEffect, useRef } from "react";
 
 interface Props {
   children: ReactNode;
@@ -44,7 +44,7 @@ export const ClickOutside = ({
   }, [exceptionRef, onClick]);
 
   return (
-    <div ref={wrapperRef} className={`${className || ""}`}>
+    <div className={`${className || ""}`} ref={wrapperRef}>
       {children}
     </div>
   );

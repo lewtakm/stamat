@@ -1,19 +1,27 @@
 import Image from "next/image";
 import { ReactNode } from "react";
-import { Providers } from "../../providers";
 import Link from "next/link";
 import { Metadata } from "next";
 import "../../css/globals.css";
+import { getServerSession } from "next-auth";
+import { redirect } from "next/navigation";
+import { ROUTES } from "@/routes";
 
 export const metadata: Metadata = {
   title: "StaMat",
   description: "Ćwicz matematykę",
 };
 
-const RootLayout = ({ children }: { children: ReactNode }) => (
-  <html lang="pl">
-    <body>
-      <Providers>
+const RootLayout = async ({ children }: { children: ReactNode }) => {
+  const userSession = await getServerSession();
+
+  if (userSession) {
+    return redirect(ROUTES.userProfile);
+  }
+
+  return (
+    <html lang="pl">
+      <body>
         <section className="dark:bg-boxdark-2 dark:text-bodydark w-full h-screen flex items-center justify-center">
           <div>
             <div className="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
@@ -171,9 +179,9 @@ const RootLayout = ({ children }: { children: ReactNode }) => (
             </div>
           </div>
         </section>
-      </Providers>
-    </body>
-  </html>
-);
+      </body>
+    </html>
+  );
+};
 
 export default RootLayout;

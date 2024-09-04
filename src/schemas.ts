@@ -22,12 +22,12 @@ export const loginSchema = yup.object().shape({
 });
 
 export const registrationSchema = yup.object().shape({
-  email,
-  password,
   confirmPassword: yup
     .string()
     .oneOf([yup.ref("password")], "Hasła muszą być takie same. ")
     .required("Potwierdź hasło."),
+  email,
+  password,
   tos: yup
     .bool()
     .oneOf([true], "Musisz zaakceptować regulamin.")

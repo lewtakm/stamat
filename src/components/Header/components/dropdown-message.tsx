@@ -10,15 +10,15 @@ export const DropdownMessage = () => {
   const [notifying, setNotifying] = useState(true);
 
   return (
-    <ClickOutside onClick={() => setDropdownOpen(false)} className="relative">
+    <ClickOutside className="relative" onClick={() => setDropdownOpen(false)}>
       <li className="relative">
         <Link
+          className="relative flex h-8.5 w-8.5 items-center justify-center rounded-full border-[0.5px] border-stroke bg-gray hover:text-primary dark:border-strokedark dark:bg-meta-4 dark:text-white"
+          href="#"
           onClick={() => {
             setNotifying(false);
             setDropdownOpen(!dropdownOpen);
           }}
-          className="relative flex h-8.5 w-8.5 items-center justify-center rounded-full border-[0.5px] border-stroke bg-gray hover:text-primary dark:border-strokedark dark:bg-meta-4 dark:text-white"
-          href="#"
         >
           <span
             className={`absolute -right-0.5 -top-0.5 z-1 h-2 w-2 rounded-full bg-meta-1 ${
@@ -30,10 +30,10 @@ export const DropdownMessage = () => {
 
           <svg
             className="fill-current duration-300 ease-in-out"
-            width="18"
+            fill="none"
             height="18"
             viewBox="0 0 18 18"
-            fill="none"
+            width="18"
             xmlns="http://www.w3.org/2000/svg"
           >
             <path
@@ -72,14 +72,14 @@ export const DropdownMessage = () => {
                 >
                   <div className="h-12.5 w-12.5 rounded-full">
                     <Image
-                      width={112}
+                      alt="User"
                       height={112}
                       src="https://i.pravatar.cc/150"
-                      alt="User"
                       style={{
-                        width: "auto",
                         height: "auto",
+                        width: "auto",
                       }}
+                      width={112}
                     />
                   </div>
 
@@ -99,14 +99,14 @@ export const DropdownMessage = () => {
                 >
                   <div className="h-12.5 w-12.5 rounded-full">
                     <Image
-                      width={112}
+                      alt="User"
                       height={112}
                       src="https://i.pravatar.cc/150"
-                      alt="User"
                       style={{
-                        width: "auto",
                         height: "auto",
+                        width: "auto",
                       }}
+                      width={112}
                     />
                   </div>
 
@@ -126,14 +126,14 @@ export const DropdownMessage = () => {
                 >
                   <div className="h-12.5 w-12.5 rounded-full">
                     <Image
-                      width={112}
+                      alt="User"
                       height={112}
                       src="https://i.pravatar.cc/150"
-                      alt="User"
                       style={{
-                        width: "auto",
                         height: "auto",
+                        width: "auto",
                       }}
+                      width={112}
                     />
                   </div>
 

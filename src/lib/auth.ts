@@ -7,12 +7,6 @@ import bcrypt from "bcryptjs";
 export const authOptions: NextAuthOptions = {
   providers: [
     credentials({
-      name: "Credentials",
-      id: "credentials",
-      credentials: {
-        email: { label: "Email", type: "text" },
-        password: { label: "Password", type: "password" },
-      },
       async authorize(credentials) {
         await connectDB();
         const user = await User.findOne({
@@ -29,10 +23,16 @@ export const authOptions: NextAuthOptions = {
         if (!passwordMatch) throw new Error("Wrong Password");
         return user;
       },
+      credentials: {
+        email: { label: "Email", type: "text" },
+        password: { label: "Password", type: "password" },
+      },
+      id: "credentials",
+      name: "Credentials",
     }),
   ],
+  secret: process.env.AUTH_SECRET,
   session: {
     strategy: "jwt",
   },
-  secret: process.env.AUTH_SECRET,
 };

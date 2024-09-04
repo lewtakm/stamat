@@ -1,4 +1,4 @@
-import { ReactNode, InputHTMLAttributes, forwardRef } from "react";
+import { InputHTMLAttributes, ReactNode, forwardRef } from "react";
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   label?: string;
@@ -31,12 +31,12 @@ export const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
       ) : null}
       <div className="relative">
         <input
-          ref={ref}
           className={`w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 text-black outline-none  focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input dark:text-white  ${
             isInvalid
               ? "text-red border-red dark:text-red focus:border-red dark:focus:border-red placeholder-red"
               : "text-black dark:text-white focus:border-primary dark:focus:border-primary"
           }`}
+          ref={ref}
           {...restProps}
         />
         {errorMessage ? (

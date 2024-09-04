@@ -1,8 +1,9 @@
 "use client";
+
+import { SubmitHandler, useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
-import { register as registerUser } from "@/actions/register";
-import { useForm, SubmitHandler } from "react-hook-form";
 import { ROUTES } from "@/routes";
+import { register as registerUser } from "@/actions/register";
 import { registrationSchema } from "@/schemas";
 import { yupResolver } from "@hookform/resolvers/yup";
 

@@ -1,3 +1,10 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": "next/core-web-vitals",
+  "plugins": ["sort-exports"],
+  "rules": {
+    "react/jsx-sort-props": 2,
+    "sort-keys": 2,
+    "sort-imports": ["error", {"ignoreDeclarationSort": true}],
+    "sort-exports/sort-exports": ["error", { "sortDir": "asc" }]
+  }
 }

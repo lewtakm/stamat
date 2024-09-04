@@ -1,25 +1,31 @@
 "use client";
-import { useState, ReactNode } from "react";
+import { ReactNode, useState } from "react";
 import { Header, Sidebar } from "@/components";
+import { Session } from "next-auth";
 
 interface DefaultLayoutProps {
+  userData: Session | null;
   children: ReactNode;
 }
 
-export const DefaultLayout = ({ children }: DefaultLayoutProps) => {
+export const DefaultLayout = ({ userData, children }: DefaultLayoutProps) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   return (
     <>
       {/* <!-- ===== Page Wrapper Start ===== --> */}
       <div className="flex">
         {/* <!-- ===== Sidebar Start ===== --> */}
-        <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
+        <Sidebar setSidebarOpen={setSidebarOpen} sidebarOpen={sidebarOpen} />
         {/* <!-- ===== Sidebar End ===== --> */}
 
         {/* <!-- ===== Content Area Start ===== --> */}
         <div className="relative flex flex-1 flex-col lg:ml-72.5">
           {/* <!-- ===== Header Start ===== --> */}
-          <Header sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
+          <Header
+            setSidebarOpen={setSidebarOpen}
+            sidebarOpen={sidebarOpen}
+            userData={userData}
+          />
           {/* <!-- ===== Header End ===== --> */}
 
           {/* <!-- ===== Main Content Start ===== --> */}

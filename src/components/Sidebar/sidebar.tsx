@@ -14,16 +14,16 @@ interface SidebarProps {
 
 const menuGroups = [
   {
-    name: "Dla Ucznia",
     menuItems: [
       {
+        children: [{ label: "Matematyka", route: "/" }],
         icon: (
           <svg
             className="fill-current"
-            width="18"
+            fill="none"
             height="18"
             viewBox="0 0 18 18"
-            fill="none"
+            width="18"
             xmlns="http://www.w3.org/2000/svg"
           >
             <path
@@ -46,16 +46,15 @@ const menuGroups = [
         ),
         label: "Wykłady",
         route: "#",
-        children: [{ label: "Matematyka", route: "/" }],
       },
       {
         icon: (
           <svg
             className="fill-current"
-            width="18"
+            fill="none"
             height="18"
             viewBox="0 0 18 18"
-            fill="none"
+            width="18"
             xmlns="http://www.w3.org/2000/svg"
           >
             <path
@@ -68,18 +67,18 @@ const menuGroups = [
         route: "#",
       },
     ],
+    name: "Dla Ucznia",
   },
   {
-    name: "Dla Nauczyciela",
     menuItems: [
       {
         icon: (
           <svg
             className="fill-current"
-            width="18"
+            fill="none"
             height="19"
             viewBox="0 0 18 19"
-            fill="none"
+            width="18"
             xmlns="http://www.w3.org/2000/svg"
           >
             <g clipPath="url(#clip0_130_9801)">
@@ -95,10 +94,10 @@ const menuGroups = [
             <defs>
               <clipPath id="clip0_130_9801">
                 <rect
-                  width="18"
-                  height="18"
                   fill="white"
+                  height="18"
                   transform="translate(0 0.052124)"
+                  width="18"
                 />
               </clipPath>
             </defs>
@@ -108,13 +107,17 @@ const menuGroups = [
         route: "#",
       },
       {
+        children: [
+          { label: "Przykład", route: "#" },
+          { label: "Przykład 2", route: "#" },
+        ],
         icon: (
           <svg
             className="fill-current"
-            width="18"
+            fill="none"
             height="19"
             viewBox="0 0 18 19"
-            fill="none"
+            width="18"
             xmlns="http://www.w3.org/2000/svg"
           >
             <g clipPath="url(#clip0_130_9807)">
@@ -134,10 +137,10 @@ const menuGroups = [
             <defs>
               <clipPath id="clip0_130_9807">
                 <rect
-                  width="18"
-                  height="18"
                   fill="white"
+                  height="18"
                   transform="translate(0 0.052124)"
+                  width="18"
                 />
               </clipPath>
             </defs>
@@ -145,12 +148,9 @@ const menuGroups = [
         ),
         label: "Kariera",
         route: "#",
-        children: [
-          { label: "Przykład", route: "#" },
-          { label: "Przykład 2", route: "#" },
-        ],
       },
     ],
+    name: "Dla Nauczyciela",
   },
 ];
 
@@ -169,25 +169,26 @@ export const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
         <div className="flex items-center justify-between gap-2 px-6 py-5.5 lg:py-6.5">
           <Link href="/">
             <Image
-              width={176}
-              height={32}
-              src={"assets/images/logo-no-background.svg"}
               alt="StaMat - Ucz się matematyki!"
+              height={32}
               priority
+              src={"assets/images/logo-no-background.svg"}
+              style={{ height: "auto", width: "auto" }}
+              width={176}
             />
           </Link>
 
           <button
-            onClick={() => setSidebarOpen(!sidebarOpen)}
             aria-controls="sidebar"
             className="block lg:hidden"
+            onClick={() => setSidebarOpen(!sidebarOpen)}
           >
             <svg
               className="fill-current"
-              width="20"
+              fill="none"
               height="18"
               viewBox="0 0 20 18"
-              fill="none"
+              width="20"
               xmlns="http://www.w3.org/2000/svg"
             >
               <path
@@ -211,8 +212,8 @@ export const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                 <ul className="mb-6 flex flex-col gap-1.5">
                   {group.menuItems.map((menuItem, menuIndex) => (
                     <SidebarItem
-                      key={menuIndex}
                       item={menuItem}
+                      key={menuIndex}
                       pageName={pageName}
                       setPageName={setPageName}
                     />
