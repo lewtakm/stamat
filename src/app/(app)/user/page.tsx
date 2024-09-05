@@ -1,8 +1,6 @@
 import { Breadcrumb } from "@/components";
 import { getServerSession } from "next-auth";
-import { useSession } from "next-auth/react";
 import Image from "next/image";
-import Link from "next/link";
 
 const UserPage = async () => {
   const sessionData = await getServerSession();
@@ -297,7 +295,9 @@ const UserPage = async () => {
         </div>
       </div>
     </div>
-  ) : null;
+  ) : (
+    <div>11</div>
+  );
 };
 
 export default UserPage;
