@@ -3,8 +3,8 @@ import { ButtonHTMLAttributes, ReactNode } from "react";
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   rounded?: boolean;
   isLoading?: boolean;
-  isDisabled?: boolean;
   children: ReactNode;
+  isDisabled?: boolean;
   variant?: "primary" | "secondary";
 }
 
