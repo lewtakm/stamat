@@ -1,4 +1,4 @@
-import { ROUTES } from "@/routes";
+import { Routes } from "@/routes";
 import { getServerSession } from "next-auth";
 import { signOut } from "next-auth/react";
 import Link from "next/link";
@@ -13,7 +13,7 @@ const Home = async () => {
       return (
         <Link
           className="border border-solid border-black rounded"
-          href={ROUTES.login}
+          href={Routes.Login}
         >
           Zaloguj
         </Link>

@@ -1,8 +1,13 @@
 import mongoose, { Schema, model } from "mongoose";
 
+export enum UserAccountTypeEnum {
+  Admin = 1,
+  User = 2,
+}
+
 const UserSchema = new Schema<UserDocument>(
   {
-    accountType: { default: 1, type: Number },
+    accountType: { default: UserAccountTypeEnum.User, type: Number },
     email: {
       match: [
         /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
@@ -34,5 +39,5 @@ export interface UserDocument {
   updatedAt: Date;
   password: string;
   verified: number;
-  accountType: number;
+  accountType: UserAccountTypeEnum;
 }

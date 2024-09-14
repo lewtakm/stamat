@@ -4,18 +4,18 @@ import Link from "next/link";
 import { Metadata } from "next";
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
-import { ROUTES } from "@/routes";
+import { Routes } from "@/routes";
 
 export const metadata: Metadata = {
   description: "Ćwicz matematykę",
-  title: "StaMat",
+  title: "StaMat - Ucz się matematyki!",
 };
 
 const RootLayout = async ({ children }: { children: ReactNode }) => {
   const userSession = await getServerSession();
 
   if (userSession) {
-    return redirect(ROUTES.userProfile);
+    return redirect(Routes.UserProfile);
   }
 
   return (

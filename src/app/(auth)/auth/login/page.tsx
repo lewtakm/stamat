@@ -3,12 +3,13 @@
 import { useState } from "react";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import { Alert, Input } from "@/components";
-import { ROUTES } from "@/routes";
+import { Alert, Button, Input } from "@/components";
+import { Routes } from "@/routes";
 import { loginSchema } from "@/schemas";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { SubmitHandler, useForm } from "react-hook-form";
 import Link from "next/link";
+import { logger } from "@/helpers";
 
 type LoginInputs = {
   email: string;
@@ -16,6 +17,7 @@ type LoginInputs = {
 };
 
 const Login = () => {
+  const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
   const router = useRouter();
   const {
@@ -28,25 +30,32 @@ const Login = () => {
   });
 
   const onSubmit: SubmitHandler<LoginInputs> = async (data) => {
-    const { email, password } = data;
+    try {
+      setIsLoading(true);
+      const { email, password } = data;
 
-    const res = await signIn("credentials", {
-      email,
-      password,
-      redirect: false,
-    });
+      const res = await signIn("credentials", {
+        email,
+        password,
+        redirect: false,
+      });
 
-    if (res?.error) {
-      setError(res.error as string);
-    }
+      if (res?.error) {
+        setError(res.error as string);
+      }
 
-    if (res?.status === 401) {
-      setError("Błedne dane logowania.");
-      return;
-    }
+      if (res?.status === 401) {
+        setError("Błedne dane logowania.");
+        return;
+      }
 
-    if (res?.ok) {
-      return router.push(ROUTES.userProfile);
+      if (res?.ok) {
+        return router.push(Routes.UserProfile);
+      }
+    } catch (err) {
+      logger(err);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -129,11 +138,9 @@ const Login = () => {
           ) : null}
 
           <div className="mb-5">
-            <input
-              className="w-full cursor-pointer rounded-lg border border-primary bg-primary p-4 text-white transition hover:bg-opacity-90"
-              type="submit"
-              value="Zaloguj"
-            />
+            <Button isLoading={isLoading} type="submit">
+              Zaloguj
+            </Button>
           </div>
 
           <button
@@ -180,7 +187,7 @@ const Login = () => {
           <div className="mt-6 text-center">
             <p>
               Nie masz konta?{" "}
-              <Link className="text-primary" href={ROUTES.register}>
+              <Link className="text-primary" href={Routes.Register}>
                 Zarejestruj się.
               </Link>
             </p>

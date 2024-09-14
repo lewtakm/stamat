@@ -2,12 +2,10 @@
 
 import { logger } from "@/helpers";
 import { connectDB } from "@/lib";
-import { User, UserDocument } from "@/models";
+import { User } from "@/models";
 import bcrypt from "bcryptjs";
 
-export const register = async (
-  values: Pick<UserDocument, "name" | "email" | "password">
-) => {
+export const addExercise = async (values: any) => {
   const { email, name, password } = values;
 
   try {

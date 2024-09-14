@@ -2,12 +2,14 @@
 
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
-import { ROUTES } from "@/routes";
-import { register as registerUser } from "@/actions/register";
+import { Routes } from "@/routes";
+import { register as registerUser } from "@/actions";
 import { registrationSchema } from "@/schemas";
 import { yupResolver } from "@hookform/resolvers/yup";
 import Link from "next/link";
-import { Input } from "@/components";
+import { Button, Input } from "@/components";
+import { useState } from "react";
+import { logger } from "@/helpers";
 
 type RegisterInputs = {
   email: string;
@@ -17,6 +19,7 @@ type RegisterInputs = {
 };
 
 const Register = () => {
+  const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
   const {
     formState: { errors },
@@ -27,21 +30,28 @@ const Register = () => {
   } = useForm<RegisterInputs>({ resolver: yupResolver(registrationSchema) });
 
   const onSubmit: SubmitHandler<RegisterInputs> = async (data) => {
-    const { email, name, password } = data;
+    try {
+      setIsLoading(true);
 
-    const response = await registerUser({
-      email,
-      name,
-      password,
-    });
+      const { email, name, password } = data;
 
-    console.log(response);
-    if (response?.error.email) {
-      setError("email", { message: response.error.email });
-      return;
-    } else {
-      reset();
-      return router.push(ROUTES.login);
+      const response = await registerUser({
+        email,
+        name,
+        password,
+      });
+
+      if (response?.error.email) {
+        setError("email", { message: response.error.email });
+        return;
+      } else {
+        reset();
+        return router.push(Routes.Login);
+      }
+    } catch (err) {
+      logger(err);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -186,11 +196,9 @@ const Register = () => {
           </div>
 
           <div className="mb-5">
-            <input
-              className="w-full cursor-pointer rounded-lg border border-primary bg-primary p-4 text-white transition hover:bg-opacity-90"
-              type="submit"
-              value="Stwórz konto"
-            />
+            <Button isLoading={isLoading} type="submit">
+              Stwórz konto
+            </Button>
           </div>
 
           <button

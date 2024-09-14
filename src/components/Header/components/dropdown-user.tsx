@@ -6,7 +6,7 @@ import Image from "next/image";
 import { ClickOutside } from "@/components";
 import { signOut } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import { ROUTES } from "@/routes";
+import { Routes } from "@/routes";
 import { Session } from "next-auth";
 
 interface DropdownUserProps {
@@ -71,7 +71,7 @@ export const DropdownUser = (props: DropdownUserProps) => {
             <li>
               <Link
                 className="flex items-center gap-3.5 text-sm font-medium duration-300 ease-in-out hover:text-primary lg:text-base"
-                href={ROUTES.userProfile}
+                href={Routes.UserProfile}
               >
                 <svg
                   className="fill-current"

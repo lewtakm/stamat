@@ -1,21 +1,27 @@
 import mongoose, { Schema, model } from "mongoose";
 
-const QuestionSchema = new Schema<QuestionDocument>(
+export enum ExcerciseLevels {
+  EASY = 1,
+  MEDIUM = 2,
+  HARD = 3,
+}
+
+const ExerciseSchema = new Schema<ExerciseDocument>(
   {
     category: { required: [true, "Kategoria jest wymagana."], type: String },
+    exercise: {
+      required: [true, "Treść zadania jest wymagana."],
+      type: String,
+    },
     level: { required: [true, "Kategoria jest wymagana."], type: Number },
     maxPoints: {
       required: [true, "Maksymalna liczba punktów jest wymagana."],
       type: Number,
     },
-    question: {
-      required: [true, "Treść pytania jest wymagana."],
-      type: String,
-    },
     scheme: {
       type: String,
     },
-    subQuestions: [
+    subExercise: [
       {
         type: String,
       },
@@ -29,24 +35,24 @@ const QuestionSchema = new Schema<QuestionDocument>(
   }
 );
 
-export const Question =
-  mongoose.models?.Question ||
-  model<QuestionDocument>("Question", QuestionSchema);
+export const Exercise =
+  mongoose.models?.Exercise ||
+  model<ExerciseDocument>("Exercise", ExerciseSchema);
 
-export interface QuestionDocument {
+export interface ExerciseDocument {
   _id: string;
-  level: number;
   scheme: string;
   createdAt: Date;
   updatedAt: Date;
   category: string;
-  question: string;
+  exercise: string;
   maxPoints: number;
   videoSolution: string;
-  subQuestions: Array<string>;
+  level: ExcerciseLevels;
+  subExercise: Array<string>;
 }
 
-export interface SubQuestionDocument {
+export interface SubExerciseDocument {
   question: string;
   maxPoints: number;
 }

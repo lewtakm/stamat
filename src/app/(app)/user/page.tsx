@@ -14,7 +14,6 @@ const UserPage = async () => {
             className="h-full w-full rounded-tl-sm rounded-tr-sm object-cover object-center"
             height={260}
             src={"/assets/images/auth_background.jpg"}
-            style={{ height: "100%", width: "100%" }}
             width={970}
           />
           <div className="absolute bottom-1 right-1 z-10 xsm:bottom-4 xsm:right-4">

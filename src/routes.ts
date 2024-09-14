@@ -1,5 +1,7 @@
-export const ROUTES = {
-  login: "/auth/login",
-  register: "/auth/register",
-  userProfile: "/user",
-};
+export enum Routes {
+  AddExcercises = "/admin/exercises/add",
+  ExcercisesList = "/admin/exercises/list",
+  Login = "/auth/login",
+  Register = "/auth/register",
+  UserProfile = "/user",
+}

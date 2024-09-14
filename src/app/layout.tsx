@@ -4,7 +4,7 @@ import "../css/globals.css";
 
 export const metadata: Metadata = {
   description: "Ćwicz matematykę",
-  title: "StaMat",
+  title: "StaMat - Ucz się matematyki!",
 };
 
 const RootLayout = async ({

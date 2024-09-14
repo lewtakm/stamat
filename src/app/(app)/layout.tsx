@@ -5,7 +5,7 @@ import { getServerSession } from "next-auth";
 
 export const metadata: Metadata = {
   description: "Ćwicz matematykę",
-  title: "StaMat",
+  title: "StaMat - Ucz się matematyki!",
 };
 
 const RootLayout = async ({
