@@ -2,33 +2,21 @@
 
 import { logger } from "@/helpers";
 import { connectDB } from "@/lib";
-import { User } from "@/models";
-import bcrypt from "bcryptjs";
+import { Exercise, ExerciseDocument } from "@/models";
 
-export const addExercise = async (values: any) => {
-  const { email, name, password } = values;
+export const addExercise = async (values: ExerciseDocument) => {
+  const { category, level, scheme } = values;
 
   try {
     await connectDB();
-    const userFound = await User.findOne({ email });
 
-    if (userFound) {
-      return {
-        error: {
-          email: "Adres e-mail jest już zarejestrowany!",
-        },
-      };
-    }
-
-    const hashedPassword = await bcrypt.hash(password, 10);
-
-    const user = new User({
-      email,
-      name,
-      password: hashedPassword,
+    const exercise = new Exercise({
+      category,
+      level,
+      scheme,
     });
 
-    await user.save();
+    await exercise.save();
   } catch (e) {
     logger(e);
   }
