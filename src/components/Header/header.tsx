@@ -8,7 +8,7 @@ import {
 import Image from "next/image";
 import { Routes } from "@/routes";
 import { Session } from "next-auth";
-import { UserPlusIcon, KeyIcon } from "@heroicons/react/20/solid";
+import { KeyIcon, UserPlusIcon } from "@heroicons/react/20/solid";
 
 interface HeaderProps {
   userData: Session | null;
