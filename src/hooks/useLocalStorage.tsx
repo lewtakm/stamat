@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 
-type SetValue<T> = T | ((val: T) => T);
+type SetValue<T> = ((val: T) => T) | T;
 
 export function useLocalStorage<T>(
   key: string,

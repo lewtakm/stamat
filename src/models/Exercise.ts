@@ -1,9 +1,9 @@
-import mongoose, { Schema, model } from "mongoose";
+import mongoose, { model, Schema } from "mongoose";
 
 export enum ExcerciseLevels {
   EASY = 1,
-  MEDIUM = 2,
   HARD = 3,
+  MEDIUM = 2,
 }
 
 const ExerciseSchema = new Schema<ExerciseDocument>(
@@ -41,18 +41,19 @@ export const Exercise =
 
 export interface ExerciseDocument {
   _id: string;
-  scheme: string;
-  createdAt: Date;
-  updatedAt: Date;
   category: string;
+  createdAt: Date;
   exercise: string;
-  maxPoints: number;
-  videoSolution: string;
+  exerciseDescription: string;
   level: ExcerciseLevels;
+  maxPoints: number;
+  scheme: string;
   subExercise: Array<string>;
+  updatedAt: Date;
+  videoSolution: string;
 }
 
 export interface SubExerciseDocument {
-  question: string;
   maxPoints: number;
+  question: string;
 }

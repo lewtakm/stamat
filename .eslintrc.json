@@ -1,34 +1,10 @@
 {
   "extends": [
     "next/core-web-vitals",
-    "plugin:storybook/recommended"
+    "plugin:storybook/recommended",
+    "plugin:perfectionist/recommended-natural-legacy"
   ],
   "plugins": [
     "perfectionist"
-  ],
-  "rules": {
-    "react/jsx-sort-props": 2,
-    "sort-keys": 2,
-    "sort-imports": [
-      "error",
-      {
-        "ignoreDeclarationSort": true
-      }
-    ],
-    "perfectionist/sort-objects": [
-      "error",
-      {
-        "type": "alphabetical"
-      }
-    ],
-    "perfectionist/sort-interfaces": [
-      "error"
-    ]
-  },
-  "settings": {
-    "perfectionist": {
-      "type": "line-length",
-      "partitionByComment": true
-    }
-  }
+  ]
 }

@@ -1,7 +1,8 @@
-import React from "react";
 import Link from "next/link";
-import { SidebarDropdown } from "./sidebar-dropdown";
 import { usePathname } from "next/navigation";
+import React from "react";
+
+import { SidebarDropdown } from "./sidebar-dropdown";
 
 export const SidebarItem = ({ item, pageName, setPageName }: any) => {
   const handleClick = () => {

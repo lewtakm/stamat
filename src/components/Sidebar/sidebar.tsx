@@ -1,10 +1,7 @@
 "use client";
 
-import Link from "next/link";
-import Image from "next/image";
-import { useLocalStorage } from "@/hooks";
-import { SidebarItem } from "./components";
 import { ClickOutside } from "@/components";
+import { useLocalStorage } from "@/hooks";
 import { Routes } from "@/routes";
 import {
   ArrowTrendingUpIcon,
@@ -13,10 +10,14 @@ import {
   CurrencyEuroIcon,
   PencilSquareIcon,
 } from "@heroicons/react/20/solid";
+import Image from "next/image";
+import Link from "next/link";
+
+import { SidebarItem } from "./components";
 
 interface SidebarProps {
-  sidebarOpen: boolean;
   setSidebarOpen: (arg: boolean) => void;
+  sidebarOpen: boolean;
 }
 
 const menuGroups = [

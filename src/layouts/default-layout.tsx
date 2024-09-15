@@ -1,11 +1,12 @@
 "use client";
-import { ReactNode, useState } from "react";
+
 import { Header, Sidebar } from "@/components";
 import { Session } from "next-auth";
+import { ReactNode, useState } from "react";
 
 interface DefaultLayoutProps {
   children: ReactNode;
-  userData: Session | null;
+  userData: null | Session;
 }
 
 export const DefaultLayout = ({ children, userData }: DefaultLayoutProps) => {

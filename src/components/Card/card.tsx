@@ -4,13 +4,13 @@ import { ReactNode } from "react";
 interface CardProps {
   children?: ReactNode;
   description?: string;
-  image?: { src: string; url: string; alt: string };
+  image?: { alt: string; src: string; url: string };
   title?:
-    | string
     | {
         text: string;
         url: string;
-      };
+      }
+    | string;
 }
 
 export const Card = (props: CardProps) => {

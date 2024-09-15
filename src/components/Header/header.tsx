@@ -1,19 +1,20 @@
+import { Routes } from "@/routes";
+import { KeyIcon, UserPlusIcon } from "@heroicons/react/20/solid";
+import Image from "next/image";
 import Link from "next/link";
+import { Session } from "next-auth";
+
 import {
   DarkModeSwitcher,
   DropdownMessage,
   DropdownNotification,
   DropdownUser,
 } from "./components";
-import Image from "next/image";
-import { Routes } from "@/routes";
-import { Session } from "next-auth";
-import { KeyIcon, UserPlusIcon } from "@heroicons/react/20/solid";
 
 interface HeaderProps {
-  userData: Session | null;
   setSidebarOpen: (arg0: boolean) => void;
-  sidebarOpen: string | boolean | undefined;
+  sidebarOpen: boolean | string | undefined;
+  userData: null | Session;
 }
 export const Header = (props: HeaderProps) => {
   const { setSidebarOpen, sidebarOpen, userData } = props;

@@ -1,6 +1,6 @@
 import { Breadcrumb } from "@/components";
-import { getServerSession } from "next-auth";
 import Image from "next/image";
+import { getServerSession } from "next-auth";
 
 const UserPage = async () => {
   const sessionData = await getServerSession();

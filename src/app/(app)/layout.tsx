@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
-import { ReactNode } from "react";
+
 import { DefaultLayout } from "@/layouts";
 import { getServerSession } from "next-auth";
+import { ReactNode } from "react";
 
 export const metadata: Metadata = {
   description: "Ćwicz matematykę",

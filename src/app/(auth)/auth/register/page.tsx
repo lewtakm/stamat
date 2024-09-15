@@ -1,21 +1,21 @@
 "use client";
 
-import { SubmitHandler, useForm } from "react-hook-form";
-import { useRouter } from "next/navigation";
-import { Routes } from "@/routes";
 import { register as registerUser } from "@/actions";
+import { Button, Input } from "@/components";
+import { logger } from "@/helpers";
+import { Routes } from "@/routes";
 import { registrationSchema } from "@/schemas";
 import { yupResolver } from "@hookform/resolvers/yup";
 import Link from "next/link";
-import { Button, Input } from "@/components";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { logger } from "@/helpers";
+import { SubmitHandler, useForm } from "react-hook-form";
 
 type RegisterInputs = {
-  email: string;
-  password: string;
   confirmPassword: string;
+  email: string;
   name: string;
+  password: string;
 };
 
 const Register = () => {

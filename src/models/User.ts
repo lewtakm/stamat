@@ -1,4 +1,4 @@
-import mongoose, { Schema, model } from "mongoose";
+import mongoose, { model, Schema } from "mongoose";
 
 export enum UserAccountTypeEnum {
   Admin = 1,
@@ -31,13 +31,13 @@ export const User =
 
 export interface UserDocument {
   _id: string;
-  name: string;
-  email: string;
-  phone: string;
-  image: string;
-  createdAt: Date;
-  updatedAt: Date;
-  password: string;
-  verified: number;
   accountType: UserAccountTypeEnum;
+  createdAt: Date;
+  email: string;
+  image: string;
+  name: string;
+  password: string;
+  phone: string;
+  updatedAt: Date;
+  verified: number;
 }

@@ -1,15 +1,15 @@
 "use client";
 
-import { useState } from "react";
-import { signIn } from "next-auth/react";
-import { useRouter } from "next/navigation";
 import { Alert, Button, Input } from "@/components";
+import { logger } from "@/helpers";
 import { Routes } from "@/routes";
 import { loginSchema } from "@/schemas";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { SubmitHandler, useForm } from "react-hook-form";
 import Link from "next/link";
-import { logger } from "@/helpers";
+import { useRouter } from "next/navigation";
+import { signIn } from "next-auth/react";
+import { useState } from "react";
+import { SubmitHandler, useForm } from "react-hook-form";
 
 type LoginInputs = {
   email: string;

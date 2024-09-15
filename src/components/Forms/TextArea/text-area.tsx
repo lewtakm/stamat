@@ -1,11 +1,11 @@
-import { ReactNode, TextareaHTMLAttributes, forwardRef } from "react";
+import { forwardRef, ReactNode, TextareaHTMLAttributes } from "react";
 
 interface TextAreaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
-  label?: string;
+  errorMessage?: string;
   icon?: ReactNode;
   isInvalid?: boolean;
   isRequired?: boolean;
-  errorMessage?: string;
+  label?: string;
 }
 export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
   (props, ref) => {

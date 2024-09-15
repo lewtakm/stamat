@@ -1,6 +1,6 @@
 interface AlertProps {
-  title: string;
   description?: string;
+  title: string;
   type: "error" | "success" | "warning";
 }
 

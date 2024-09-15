@@ -3,10 +3,10 @@
 import { ReactNode, RefObject, useEffect, useRef } from "react";
 
 interface Props {
-  className?: string;
   children: ReactNode;
-  onClick: () => void;
+  className?: string;
   exceptionRef?: RefObject<HTMLElement>;
+  onClick: () => void;
 }
 
 export const ClickOutside = ({
@@ -19,7 +19,7 @@ export const ClickOutside = ({
 
   useEffect(() => {
     const handleClickListener = (event: MouseEvent) => {
-      let clickedInside: null | boolean = false;
+      let clickedInside: boolean | null = false;
       if (exceptionRef) {
         clickedInside =
           (wrapperRef.current &&

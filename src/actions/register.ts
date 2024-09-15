@@ -6,7 +6,7 @@ import { User, UserDocument } from "@/models";
 import bcrypt from "bcryptjs";
 
 export const register = async (
-  values: Pick<UserDocument, "name" | "email" | "password">
+  values: Pick<UserDocument, "email" | "name" | "password">
 ) => {
   const { email, name, password } = values;
 

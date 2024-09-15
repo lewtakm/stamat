@@ -1,13 +1,13 @@
 "use client";
 
-import { useState } from "react";
-import Link from "next/link";
-import Image from "next/image";
 import { ClickOutside } from "@/components";
-import { signOut } from "next-auth/react";
-import { useRouter } from "next/navigation";
 import { Routes } from "@/routes";
+import Image from "next/image";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { Session } from "next-auth";
+import { signOut } from "next-auth/react";
+import { useState } from "react";
 
 interface DropdownUserProps {
   userData: Session;
