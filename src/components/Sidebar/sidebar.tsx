@@ -12,68 +12,75 @@ import {
 } from "@heroicons/react/20/solid";
 import Image from "next/image";
 import Link from "next/link";
+import { Session } from "next-auth";
+import { useMemo } from "react";
 
 import { SidebarItem } from "./components";
 
 interface SidebarProps {
   setSidebarOpen: (arg: boolean) => void;
   sidebarOpen: boolean;
+  userData: null | Session;
 }
 
-const menuGroups = [
-  {
-    menuItems: [
-      {
-        children: [{ label: "Matematyka", route: "/" }],
-        icon: <PencilSquareIcon className="size-5" />,
-        label: "Wykłady",
-        route: "#",
-      },
-      {
-        icon: <ArrowTrendingUpIcon className="size-5" />,
-        label: "Premium",
-        route: "#",
-      },
-    ],
-    name: "Dla Ucznia",
-  },
-  {
-    menuItems: [
-      {
-        icon: <BookOpenIcon className="size-5" />,
-        label: "Nauczanie",
-        route: "#",
-      },
-      {
-        children: [
-          { label: "Przykład", route: "#" },
-          { label: "Przykład 2", route: "#" },
-        ],
-        icon: <CurrencyEuroIcon className="size-5" />,
-        label: "Kariera",
-        route: "#",
-      },
-    ],
-    name: "Dla Nauczyciela",
-  },
-  {
-    menuItems: [
-      {
-        children: [
-          { label: "Dodaj zadanie", route: Routes.AddExcercises },
-          { label: "Lista zadań", route: Routes.ExcercisesList },
-        ],
-        icon: <CalculatorIcon className="size-5" />,
-        label: "Zadania",
-        route: "#",
-      },
-    ],
-    name: "Panel Administracyjny",
-  },
-];
-
-export const Sidebar = ({ setSidebarOpen, sidebarOpen }: SidebarProps) => {
+export const Sidebar = (props: SidebarProps) => {
+  const { setSidebarOpen, sidebarOpen, userData } = props;
   const [pageName, setPageName] = useLocalStorage("selectedMenu", "dashboard");
+
+  const menuGroups = useMemo(
+    () => [
+      {
+        menuItems: [
+          {
+            children: [{ label: "Matematyka", route: "/" }],
+            icon: <PencilSquareIcon className="size-5" />,
+            label: "Wykłady",
+            route: "#",
+          },
+          {
+            icon: <ArrowTrendingUpIcon className="size-5" />,
+            label: "Premium",
+            route: "#",
+          },
+        ],
+        name: "Dla Ucznia",
+      },
+      {
+        menuItems: [
+          {
+            icon: <BookOpenIcon className="size-5" />,
+            label: "Nauczanie",
+            route: "#",
+          },
+          {
+            children: [
+              { label: "Przykład", route: "#" },
+              { label: "Przykład 2", route: "#" },
+            ],
+            icon: <CurrencyEuroIcon className="size-5" />,
+            label: "Kariera",
+            route: "#",
+          },
+        ],
+        name: "Dla Nauczyciela",
+      },
+      {
+        menuItems: [
+          {
+            children: [
+              { label: "Dodaj zadanie", route: Routes.AddExcercises },
+              { label: "Lista zadań", route: Routes.ExcercisesList },
+            ],
+            icon: <CalculatorIcon className="size-5" />,
+            label: "Zadania",
+            route: "#",
+          },
+        ],
+        name: "Panel Administracyjny",
+      },
+    ],
+    []
+  );
 
   return (
     <ClickOutside onClick={() => setSidebarOpen(false)}>

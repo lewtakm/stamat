@@ -5,7 +5,7 @@ import { getServerSession } from "next-auth";
 const UserPage = async () => {
   const sessionData = await getServerSession();
   return sessionData ? (
-    <div className="mx-auto max-w-242.5">
+    <div className="mx-auto">
       <Breadcrumb pageName="Profil" />
       <div className="overflow-hidden rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
         <div className="relative z-20 h-35 md:h-65">

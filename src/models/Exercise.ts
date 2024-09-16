@@ -9,7 +9,7 @@ export enum ExcerciseLevels {
 const ExerciseSchema = new Schema<ExerciseDocument>(
   {
     category: { required: [true, "Kategoria jest wymagana."], type: String },
-    exercise: {
+    description: {
       required: [true, "Treść zadania jest wymagana."],
       type: String,
     },
@@ -18,10 +18,7 @@ const ExerciseSchema = new Schema<ExerciseDocument>(
       required: [true, "Maksymalna liczba punktów jest wymagana."],
       type: Number,
     },
-    scheme: {
-      type: String,
-    },
-    subExercise: [
+    subExercises: [
       {
         type: String,
       },
@@ -43,12 +40,10 @@ export interface ExerciseDocument {
   _id: string;
   category: string;
   createdAt: Date;
-  exercise: string;
-  exerciseDescription: string;
+  description: string;
   level: ExcerciseLevels;
   maxPoints: number;
-  scheme: string;
-  subExercise: Array<string>;
+  subExercises: Array<string>;
   updatedAt: Date;
   videoSolution: string;
 }

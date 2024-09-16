@@ -30,3 +30,12 @@ export const registrationSchema = yup.object().shape({
   name: yup.string().required("Wpisz imie i nazwisko."),
   password,
 });
+
+export const exerciseSchema = yup.object().shape({
+  category: yup.string().required("Kategoria jest wymagana."),
+  description: yup.string().required("Treść zadania jest wymagana."),
+  level: yup.number().required("Poziom jest wymagany."),
+  maxPoints: yup.number().required("Maksymalna liczba punktów jest wymagana."),
+  subExercises: yup.array().of(yup.string()),
+  videoSolution: yup.string(),
+});
