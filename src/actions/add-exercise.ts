@@ -5,16 +5,10 @@ import { connectDB } from "@/lib";
 import { Exercise, ExerciseDocument } from "@/models";
 
 export const addExercise = async (values: ExerciseDocument) => {
-  const { category, level, scheme } = values;
-
   try {
     await connectDB();
 
-    const exercise = new Exercise({
-      category,
-      level,
-      scheme,
-    });
+    const exercise = new Exercise(values);
 
     await exercise.save();
   } catch (e) {
