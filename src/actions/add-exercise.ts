@@ -9,7 +9,7 @@ export const addExercise = async (values: ExerciseDocument) => {
     await connectDB();
 
     const exercise = new Exercise(values);
-
+    console.log(values);
     await exercise.save();
   } catch (e) {
     logger(e);
