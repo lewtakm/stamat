@@ -1,5 +1,7 @@
+"use client";
+
 import { CommonInputProps } from "@/helpers";
-import { Control, Controller, FieldValues } from "react-hook-form";
+import { Control, Controller } from "react-hook-form";
 import ReactSelect, { GroupBase, Props } from "react-select";
 
 export const Select = <
