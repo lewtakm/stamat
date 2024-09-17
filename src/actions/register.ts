@@ -1,12 +1,12 @@
 "use server";
 
-import { logger } from "@/helpers";
+import { logger, OmitMongoDefaultValues } from "@/helpers";
 import { connectDB } from "@/lib";
 import { User, UserDocument } from "@/models";
 import bcrypt from "bcryptjs";
 
 export const register = async (
-  values: Pick<UserDocument, "email" | "name" | "password">
+  values: OmitMongoDefaultValues<UserDocument>
 ) => {
   const { email, name, password } = values;
 

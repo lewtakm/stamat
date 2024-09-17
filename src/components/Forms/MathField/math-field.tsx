@@ -1,15 +1,12 @@
+import { CommonInputProps } from "@/helpers";
 import { MathfieldElement } from "mathlive";
 import { ChangeEvent, FormEvent, forwardRef } from "react";
 import { DetailedHTMLProps, HTMLAttributes } from "react";
 
-interface MathFieldProps {
+interface MathFieldProps extends CommonInputProps {
   className?: string;
-  errorMessage?: string;
-  isInvalid?: boolean;
   isPreview?: boolean;
   isReadOnly?: boolean;
-  isRequired?: boolean;
-  label?: string;
   onInput?: (e: ChangeEvent<MathfieldElement>) => void;
   value?: string;
 }
@@ -29,6 +26,7 @@ export const MathField = forwardRef<MathfieldElement, MathFieldProps>(
   (props, ref) => {
     const {
       className,
+      errorMessage,
       isInvalid,
       isPreview,
       isReadOnly,
@@ -38,7 +36,7 @@ export const MathField = forwardRef<MathfieldElement, MathFieldProps>(
     } = props;
 
     return (
-      <div className="max-w-full">
+      <div className="max-w-full flex flex-col">
         {label ? (
           <label
             className={`mb-2.5 block font-medium ${
@@ -62,6 +60,11 @@ export const MathField = forwardRef<MathfieldElement, MathFieldProps>(
         >
           {value}
         </math-field>
+        {errorMessage ? (
+          <div className="mt-2 text-red dark:text-red text-xs">
+            {errorMessage}
+          </div>
+        ) : null}
       </div>
     );
   }

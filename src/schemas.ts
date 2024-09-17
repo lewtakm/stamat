@@ -36,6 +36,6 @@ export const exerciseSchema = yup.object().shape({
   description: yup.string().required("Treść zadania jest wymagana."),
   level: yup.number().required("Poziom jest wymagany."),
   maxPoints: yup.number().required("Maksymalna liczba punktów jest wymagana."),
-  subExercises: yup.array().of(yup.string()),
+  subExercises: yup.array().of(yup.string().required()),
   videoSolution: yup.string(),
 });

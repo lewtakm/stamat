@@ -1,12 +1,19 @@
-import { Card } from "@/components";
+import { Card, MathField } from "@/components";
 import "mathlive";
 
 interface ExerciseRendererProps {
   description: string;
-  excercise: string;
+  level?: any;
+  subExercises?: Array<string>;
+  title: string;
 }
 
 export const ExerciseRenderer = (props: ExerciseRendererProps) => {
-  const { description, excercise } = props;
-  return <Card title="Zadanie 1">Renderer</Card>;
+  const { description, level, subExercises, title } = props;
+  return (
+    <Card title={title}>
+      Poziom trudności zadania: {level?.label}
+      <MathField isPreview value={description} />
+    </Card>
+  );
 };

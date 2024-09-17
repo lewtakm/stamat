@@ -3,6 +3,7 @@
 import { register as registerUser } from "@/actions";
 import { Button, Input } from "@/components";
 import { logger } from "@/helpers";
+import { UserDocument } from "@/models";
 import { Routes } from "@/routes";
 import { registrationSchema } from "@/schemas";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -11,12 +12,10 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 
-type RegisterInputs = {
-  confirmPassword: string;
-  email: string;
-  name: string;
-  password: string;
-};
+type RegisterInputs = { confirmPassword: string } & Pick<
+  UserDocument,
+  "email" | "name" | "password"
+>;
 
 const Register = () => {
   const [isLoading, setIsLoading] = useState(false);

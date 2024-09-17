@@ -1,12 +1,12 @@
+import { CommonInputProps } from "@/helpers";
 import { forwardRef, InputHTMLAttributes, ReactNode } from "react";
 
-interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
-  errorMessage?: string;
+interface InputProps
+  extends InputHTMLAttributes<HTMLInputElement>,
+    CommonInputProps {
   icon?: ReactNode;
-  isInvalid?: boolean;
-  isRequired?: boolean;
-  label?: string;
 }
+
 export const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
   const {
     errorMessage,

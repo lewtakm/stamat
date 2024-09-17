@@ -13,7 +13,10 @@ const ExerciseSchema = new Schema<ExerciseDocument>(
       required: [true, "Treść zadania jest wymagana."],
       type: String,
     },
-    level: { required: [true, "Kategoria jest wymagana."], type: Number },
+    level: {
+      required: [true, "Kategoria jest wymagana."],
+      type: Number,
+    },
     maxPoints: {
       required: [true, "Maksymalna liczba punktów jest wymagana."],
       type: Number,
@@ -41,14 +44,9 @@ export interface ExerciseDocument {
   category: string;
   createdAt: Date;
   description: string;
-  level: ExcerciseLevels;
+  level: number;
   maxPoints: number;
-  subExercises: Array<string>;
+  subExercises?: Array<string>;
   updatedAt: Date;
-  videoSolution: string;
-}
-
-export interface SubExerciseDocument {
-  maxPoints: number;
-  question: string;
+  videoSolution?: string;
 }

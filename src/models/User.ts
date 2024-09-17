@@ -31,13 +31,13 @@ export const User =
 
 export interface UserDocument {
   _id: string;
-  accountType: UserAccountTypeEnum;
+  accountType?: UserAccountTypeEnum;
   createdAt: Date;
   email: string;
-  image: string;
+  image?: string;
   name: string;
   password: string;
-  phone: string;
+  phone?: string;
   updatedAt: Date;
-  verified: number;
+  verified?: number;
 }

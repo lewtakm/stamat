@@ -15,7 +15,6 @@ interface CardProps {
 
 export const Card = (props: CardProps) => {
   const { children, description, image, title } = props;
-  console.log("props", props);
   return (
     <div className="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
       {image && (
