@@ -53,8 +53,6 @@ const AddExercise = () => {
   const subExercises = watch("subExercises");
   const level = watch("level");
 
-  console.log("description", description, level);
-
   const handleOnDescriptionChange = (e: ChangeEvent<MathfieldElement>) => {
     setValue("description", e.target.value);
   };
@@ -89,12 +87,15 @@ const AddExercise = () => {
           >
             <MathField
               className="h-50"
+              isRequired
               label="Treść zadania"
               onInput={handleOnDescriptionChange}
               {...register("description")}
             />
             <Select
               control={control}
+              isRequired
+              label="Poziom trudności"
               name="level"
               options={levelOptions}
               placeholder="Wybierz poziom trudności zadania"

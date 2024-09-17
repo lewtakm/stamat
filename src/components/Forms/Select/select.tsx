@@ -12,9 +12,27 @@ export const Select = <
   props: { control: Control<any> } & CommonInputProps &
     Props<Option, IsMulti, Group>
 ) => {
-  const { control, defaultValue, name } = props;
+  const {
+    className,
+    control,
+    defaultValue,
+    isInvalid,
+    isRequired,
+    label,
+    name,
+  } = props;
   return (
     <div className="max-w-full flex flex-col">
+      {label ? (
+        <label
+          className={`mb-2.5 block font-medium ${
+            isInvalid ? "text-red" : "text-black dark:text-white"
+          } `}
+        >
+          {label}
+          {isRequired ? <span className="text-red">*</span> : null}
+        </label>
+      ) : null}
       <Controller
         control={control}
         defaultValue={defaultValue}
@@ -31,6 +49,7 @@ export const Select = <
                   : "[&&]dark:bg-form-input",
               singleValue: () => "dark:text-white",
             }}
+            label={label}
             placeholder="Wybierz..."
             {...props}
             {...field}
