@@ -27,7 +27,7 @@ const Home = async () => (
       </div>
     </section>
     <section
-      className="w-full py-12 md:py-24 lg:py-32 bg-[#2a3447]"
+      className="w-full py-12 md:py-24 lg:py-32 dark:bg-[#2a3447]"
       id="features"
     >
       <div className="px-4 md:px-6">
