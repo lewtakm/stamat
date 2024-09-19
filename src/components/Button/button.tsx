@@ -20,7 +20,7 @@ export const Button = (props: ButtonProps) => {
 
   return (
     <button
-      className="w-full cursor-pointer rounded-lg border border-primary bg-primary p-4 text-white transition hover:bg-opacity-90 disabled:bg-opacity-30 disabled:border-opacity-30 disabled:cursor-wait flex justify-center"
+      className="w-full cursor-pointer text-nowrap rounded-lg border border-primary bg-primary p-4 text-white transition hover:bg-opacity-90 disabled:bg-opacity-30 disabled:border-opacity-30 disabled:cursor-wait flex justify-center"
       type={type}
       {...restProps}
       disabled={isLoading || isLoading}
