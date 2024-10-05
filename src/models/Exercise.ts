@@ -8,22 +8,39 @@ export enum ExcerciseLevels {
 
 const ExerciseSchema = new Schema<ExerciseDocument>(
   {
-    category: { required: [true, "Kategoria jest wymagana."], type: String },
-    description: {
-      required: [true, "Treść zadania jest wymagana."],
-      type: String,
-    },
-    level: {
+    category: {
+      default: 1,
       required: [true, "Kategoria jest wymagana."],
       type: Number,
     },
-    maxPoints: {
-      required: [true, "Maksymalna liczba punktów jest wymagana."],
-      type: Number,
+    exercise: {
+      answer: {
+        required: [true, "Odpowiedź jest wymagana."],
+        type: String,
+      },
+      points: {
+        required: [true, "Maksymalna liczba punktów jest wymagana."],
+        type: Number,
+      },
+      question: {
+        required: [true, "Opis zadania jest wymagany."],
+        type: String,
+      },
     },
     subExercises: [
       {
-        type: String,
+        answer: {
+          required: [true, "Odpowiedź jest wymagana."],
+          type: String,
+        },
+        points: {
+          required: [true, "Maksymalna liczba punktów jest wymagana."],
+          type: Number,
+        },
+        question: {
+          required: [true, "Opis zadania jest wymagany."],
+          type: String,
+        },
       },
     ],
     videoSolution: {
@@ -39,14 +56,19 @@ export const Exercise =
   mongoose.models?.Exercise ||
   model<ExerciseDocument>("Exercise", ExerciseSchema);
 
+export interface ExerciesBody {
+  answer: string;
+  points: number;
+  question: string;
+}
+
 export interface ExerciseDocument {
   _id: string;
-  category: string;
+  category: number;
   createdAt: Date;
-  description: string;
+  exercise: ExerciesBody;
   level: number;
-  maxPoints: number;
-  subExercises?: Array<string>;
+  subExercises?: Array<ExerciesBody>;
   updatedAt: Date;
   videoSolution?: string;
 }

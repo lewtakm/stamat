@@ -32,10 +32,31 @@ export const registrationSchema = yup.object().shape({
 });
 
 export const exerciseSchema = yup.object().shape({
-  category: yup.string().required("Kategoria jest wymagana."),
-  description: yup.string().required("Treść zadania jest wymagana."),
-  level: yup.number().required("Poziom jest wymagany."),
-  maxPoints: yup.number().required("Maksymalna liczba punktów jest wymagana."),
-  subExercises: yup.array().of(yup.string().required()),
+  category: yup.number().required("Kategoria jest wymagana."),
+  exercise: yup
+    .object()
+    .shape({
+      answer: yup.string().required("Odpowiedź jest wymagana."),
+      points: yup
+        .number()
+        .positive("Liczba punktów musi być większa od zera.")
+        .required("Maksymalna liczba punktów jest wymagana."),
+      question: yup.string().required("Opis zadania jest wymagany."),
+    })
+    .required("Treść zadania jest wymagana."),
+  level: yup
+    .object()
+    .shape({
+      label: yup.string().required(),
+      value: yup.string().required(),
+    })
+    .required("Poziom jest wymagany."),
+  subExercises: yup.array().of(
+    yup.object().shape({
+      answer: yup.string().required("Odpowiedź jest wymagana."),
+      points: yup.number().required("Maksymalna liczba punktów jest wymagana."),
+      question: yup.string().required("Opis zadania jest wymagany."),
+    })
+  ),
   videoSolution: yup.string(),
 });

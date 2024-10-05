@@ -26,7 +26,7 @@ export const DefaultLayout = ({ children, userData }: DefaultLayoutProps) => {
             userData={userData}
           />
           <main>
-            <div className="mx-auto h-full">{children}</div>
+            <div className="mx-auto h-full p-4 md:p-6 2xl:p-10">{children}</div>
           </main>
         </div>
       </div>

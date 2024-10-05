@@ -17,7 +17,7 @@ const RootLayout = async ({
   return (
     <html lang="pl">
       <body>
-        <div className="dark:bg-boxdark-2 dark:text-bodydark h-screen">
+        <div className="dark:bg-boxdark-2 dark:text-bodydark min-h-screen">
           {children}
         </div>
       </body>

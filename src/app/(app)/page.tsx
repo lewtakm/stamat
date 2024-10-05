@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 const Home = async () => (
-  <>
+  <section className="-m-4 md:-m-6 2xl:-m-10">
     <section className="w-full py-12 md:py-24 dark:bg-gradient-to-b from-[#1c2434] to-[#2a3447]">
       <div className="px-4 md:px-6">
         <div className="flex flex-col items-center space-y-4 text-center">
@@ -95,7 +95,7 @@ const Home = async () => (
               </li>
             </ul>
           </div>
-          <div className="relative">
+          <div className="relative flex items-center justify-center">
             <div className="absolute inset-0 bg-gradient-to-r from-[#4CAF50] to-[#2196F3] rounded-lg transform rotate-3"></div>
             <Image
               alt="Uczeń korzystający z platformy StaMat"
@@ -116,7 +116,7 @@ const Home = async () => (
         <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-center mb-8 ">
           Wybierz plan dla siebie
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-3xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
           <Card className="dark:bg-[#1c2434] border-[#4CAF50]">
             <CardContent className="p-6">
               <h3 className="text-2xl font-bold mb-2 ">Jednorazowy dostęp</h3>
@@ -132,7 +132,7 @@ const Home = async () => (
                 </li>
                 <li className="flex items-center text-gray-300">
                   <CheckCircle className="h-5 w-5 text-[#4CAF50] mr-2" />
-                  Dostęp przez 12 miesięcy
+                  Dożywotni dostęp
                 </li>
               </ul>
               <Button className="w-full bg-[#4CAF50] hover:bg-[#45a049] ">
@@ -193,7 +193,7 @@ const Home = async () => (
             </div>
           </div>
         </section> */}
-  </>
+  </section>
 );
 
 export default Home;

@@ -6,6 +6,7 @@ import {
   Button,
   Card,
   ExerciseRenderer,
+  Input,
   Select,
 } from "@/components";
 import { MathField } from "@/components";
@@ -15,17 +16,12 @@ import { exerciseSchema } from "@/schemas";
 import { yupResolver } from "@hookform/resolvers/yup";
 import "mathlive";
 import { MathfieldElement } from "mathlive";
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 
-type ExerciseInputs = Pick<
+type ExerciseInputs = { level: { label: string; value: string } } & Pick<
   ExerciseDocument,
-  | "category"
-  | "description"
-  | "level"
-  | "maxPoints"
-  | "subExercises"
-  | "videoSolution"
+  "category" | "exercise" | "subExercises" | "videoSolution"
 >;
 
 const levelOptions = [
@@ -35,6 +31,7 @@ const levelOptions = [
 ];
 
 const AddExercise = () => {
+  const [error, setError] = useState<null | string>(null);
   const [isLoading, setIsLoading] = useState(false);
 
   const {
@@ -44,27 +41,46 @@ const AddExercise = () => {
     handleSubmit,
     register,
     reset,
-    setError,
     setValue,
     watch,
-  } = useForm<ExerciseInputs>({ resolver: yupResolver(exerciseSchema) });
+  } = useForm<ExerciseInputs>({
+    mode: "onChange",
+    resolver: yupResolver(exerciseSchema),
+  });
 
-  const description = watch("description");
-  const subExercises = watch("subExercises");
+  useEffect(() => {
+    register("level", { value: { label: "Łatwe", value: "1" } });
+    register("category", { value: 1 });
+  }, [register]);
+
+  const exercise = getValues("exercise");
+  const subExercises = getValues("subExercises");
   const level = watch("level");
 
-  const handleOnDescriptionChange = (e: ChangeEvent<MathfieldElement>) => {
-    setValue("description", e.target.value);
+  useEffect(() => console.log(level, exercise), [exercise, level]);
+
+  const handleOnQuestionChange = (e: ChangeEvent<MathfieldElement>) => {
+    setValue("exercise.question", e.target.value, { shouldValidate: true });
+  };
+
+  const handleOnAnswerChange = (e: ChangeEvent<MathfieldElement>) => {
+    setValue("exercise.answer", e.target.value, { shouldValidate: true });
   };
 
   const onSubmit: SubmitHandler<ExerciseInputs> = async (data) => {
+    console.log(data);
+    const { level, ...restData } = data;
     try {
       setIsLoading(true);
 
-      const response = await addExercise(data);
+      const response = await addExercise({
+        ...restData,
+        level: Number(level.value),
+      });
 
-      if (response?.error.email) {
-        // setError("email", { message: response.error.email });
+      console.log("response", response);
+      if (response?.error) {
+        setError(response.error);
         return;
       } else {
         reset();
@@ -87,18 +103,37 @@ const AddExercise = () => {
           >
             <MathField
               className="h-50"
+              isInvalid={Boolean(errors.exercise?.question)}
               isRequired
               label="Treść zadania"
-              onInput={handleOnDescriptionChange}
-              {...register("description")}
+              onInput={handleOnQuestionChange}
+              {...register("exercise.question")}
+            />
+            <MathField
+              className="h-50"
+              isInvalid={Boolean(errors.exercise?.answer)}
+              isRequired
+              label="Odpowiedź"
+              onInput={handleOnAnswerChange}
+              {...register("exercise.answer")}
             />
             <Select
               control={control}
+              isInvalid={Boolean(errors.level)}
               isRequired
               label="Poziom trudności"
               name="level"
               options={levelOptions}
               placeholder="Wybierz poziom trudności zadania"
+            />
+            <Input
+              errorMessage={errors.exercise?.points?.message}
+              isInvalid={Boolean(errors.exercise?.points?.message)}
+              isRequired
+              label="Liczba punktów"
+              placeholder="Wpisz liczbe punktów za zadanie"
+              type="number"
+              {...register("exercise.points")}
             />
             <Button isLoading={isLoading} type="submit">
               Dodaj zadanie
@@ -107,7 +142,7 @@ const AddExercise = () => {
         </Card>
 
         <ExerciseRenderer
-          description={description}
+          exercise={exercise}
           level={level}
           subExercises={subExercises}
           title="Podgląd zadania"

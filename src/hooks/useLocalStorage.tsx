@@ -1,4 +1,5 @@
 "use client";
+import { logger } from "@/helpers";
 import { useEffect, useState } from "react";
 
 type SetValue<T> = ((val: T) => T) | T;
@@ -20,7 +21,7 @@ export function useLocalStorage<T>(
       }
     } catch (error) {
       // If error also return initialValue
-      console.log(error);
+      logger(error);
       return initialValue;
     }
   });
@@ -40,7 +41,7 @@ export function useLocalStorage<T>(
       }
     } catch (error) {
       // A more advanced implementation would handle the error case
-      console.log(error);
+      logger(error);
     }
   }, [key, storedValue]);
 

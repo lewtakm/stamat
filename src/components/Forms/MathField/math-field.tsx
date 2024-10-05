@@ -52,8 +52,12 @@ export const MathField = forwardRef<MathfieldElement, MathFieldProps>(
           class={`text-3xl w-full ${
             isPreview
               ? ""
-              : "rounded-lg border-[1.5px] border-stroke focus:border-primary active:border-primary dark:focus:border-primary dark:border-form-strokedark dark:bg-form-input disabled:bg-whiter disabled:cursor-default"
-          } bg-transparent py-3 px-5 text-black outline-none transition dark:text-white max-w-full ${className}`}
+              : "rounded-lg border-[1.5px] dark:border-form-strokedark dark:bg-form-input disabled:bg-whiter disabled:cursor-default"
+          } bg-transparent py-3 px-5 text-black outline-none transition dark:text-white max-w-full ${
+            isInvalid
+              ? "!text-red !border-red dark:text-red focus:border-red dark:focus:border-red placeholder-red"
+              : "border-stroke focus:border-primary active:border-primary dark:focus:border-primary"
+          } ${className}`}
           read-only={isReadOnly || isPreview}
           ref={ref}
           {...props}

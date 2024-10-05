@@ -41,7 +41,11 @@ export const Select = <
           <ReactSelect
             classNames={{
               control: () =>
-                "rounded border border-stroke py-2 pl-3 pr-3 outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:bg-form-input",
+                `rounded border py-2 pl-3 pr-3 outline-none transition dark:bg-form-input ${
+                  isInvalid
+                    ? "!text-red !border-red dark:text-red focus:border-red dark:focus:border-red placeholder-red"
+                    : "focus:border-primary active:border-primary dark:border-form-strokedark border-stroke"
+                }`,
               menu: () => "dark:bg-form-input",
               option: (state) =>
                 state.isFocused

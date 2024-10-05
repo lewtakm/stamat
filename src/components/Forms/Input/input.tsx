@@ -18,7 +18,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
   } = props;
 
   return (
-    <>
+    <div className="max-w-full">
       {label ? (
         <label
           className={`mb-2.5 block font-medium ${
@@ -47,7 +47,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
 
         {icon ? <span className="absolute right-4 top-4">{icon}</span> : null}
       </div>
-    </>
+    </div>
   );
 });
 
