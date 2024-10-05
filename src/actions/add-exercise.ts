@@ -18,7 +18,8 @@ export const addExercise = async (
   } catch (e) {
     logger(e);
     return {
-      error: "Wystąpił błąd podczas dodawania zadania.",
+      error: e,
+      message: "Wystąpił błąd podczas dodawania zadania.",
     };
   }
 };

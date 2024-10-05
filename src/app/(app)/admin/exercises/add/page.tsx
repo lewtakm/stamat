@@ -2,6 +2,7 @@
 
 import { addExercise } from "@/actions";
 import {
+  Alert,
   Breadcrumb,
   Button,
   Card,
@@ -11,10 +12,9 @@ import {
 } from "@/components";
 import { MathField } from "@/components";
 import { logger } from "@/helpers";
-import { ExcerciseLevels, ExerciseDocument } from "@/models";
+import { ExerciseDocument } from "@/models";
 import { exerciseSchema } from "@/schemas";
 import { yupResolver } from "@hookform/resolvers/yup";
-import "mathlive";
 import { MathfieldElement } from "mathlive";
 import { ChangeEvent, useEffect, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
@@ -31,7 +31,14 @@ const levelOptions = [
 ];
 
 const AddExercise = () => {
-  const [error, setError] = useState<null | string>(null);
+  const [successMsg, setSuccessMsg] = useState<{
+    id: string;
+    message: string;
+  } | null>(null);
+  const [errorMsg, setErrorMsg] = useState<{
+    error: unknown;
+    message: string;
+  } | null>(null);
   const [isLoading, setIsLoading] = useState(false);
 
   const {
@@ -68,7 +75,6 @@ const AddExercise = () => {
   };
 
   const onSubmit: SubmitHandler<ExerciseInputs> = async (data) => {
-    console.log(data);
     const { level, ...restData } = data;
     try {
       setIsLoading(true);
@@ -78,9 +84,10 @@ const AddExercise = () => {
         level: Number(level.value),
       });
 
-      console.log("response", response);
-      if (response?.error) {
-        setError(response.error);
+      if (response.success) {
+        setSuccessMsg(response.success);
+      } else if (response.error) {
+        setErrorMsg(response);
         return;
       } else {
         reset();
@@ -96,6 +103,17 @@ const AddExercise = () => {
     <div className="mx-auto">
       <Breadcrumb pageName="Dodaj zadanie" />
       <div className="flex w-full flex-col gap-5.5">
+        {errorMsg ? (
+          <div className="mb-6">
+            <Alert title={errorMsg.message} type="error" />
+          </div>
+        ) : null}
+        {successMsg ? (
+          <div className="mb-6">
+            <Alert title={successMsg.message} type="success" />
+          </div>
+        ) : null}
+
         <Card title="Dodaj zadanie">
           <form
             className="flex w-full flex-col gap-5.5"

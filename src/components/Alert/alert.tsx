@@ -8,6 +8,8 @@ const elementsBasedOnAlertType = {
   error: {
     classes: {
       container: "border-[#F87171] bg-[#F87171] dark:bg-[#1B1B24]",
+      h5: "text-[#9D5425]",
+      p: "text-[#9D5425]",
     },
     icon: (
       <div className="mr-5 flex h-9 w-full max-w-[36px] items-center justify-center rounded-lg bg-[#F87171]">
@@ -30,6 +32,8 @@ const elementsBasedOnAlertType = {
   success: {
     classes: {
       container: "border-[#34D399] bg-[#34D399] dark:bg-[#1B1B24]",
+      h5: "text-[#34D399]",
+      p: "text-[#34D399]",
     },
     icon: (
       <div className="mr-5 flex h-9 w-full max-w-[36px] items-center justify-center rounded-lg bg-[#34D399]">
@@ -51,7 +55,9 @@ const elementsBasedOnAlertType = {
   },
   warning: {
     classes: {
-      container: "border-[#F87171] bg-[#F87171] dark:bg-[#1B1B24]",
+      container: "border-warning bg-warning",
+      h5: "text-[#D0915C]",
+      p: "text-[#D0915C]",
     },
     icon: (
       <div className="mr-5 flex h-9 w-9 items-center justify-center rounded-lg bg-warning bg-opacity-30">
@@ -79,15 +85,13 @@ export const Alert = (props: AlertProps) => {
 
   return (
     <div
-      className={`flex w-full border-l-6 ${classes.container} bg-opacity-[15%] p-7 shadow-md dark:bg-[#1B1B24] dark:bg-opacity-30`}
+      className={`flex w-full border-l-6 ${classes.container} bg-opacity-[15%] p-7 shadow-md dark:bg-boxdark flex items-center`}
     >
       {icon}
-      <div className="w-full">
-        <h5 className="mb-3 font-semibold text-[#B45454]">{title}</h5>
+      <div className="w-full flex justify-items-center flex-col">
+        <h5 className={`font-semibold ${classes.h5}`}>{title}</h5>
         {description ? (
-          <ul>
-            <li className="leading-relaxed text-[#CD5D5D]">{description}</li>
-          </ul>
+          <p className={`leading-relaxed ${classes.p}`}>{description}</p>
         ) : null}
       </div>
     </div>
