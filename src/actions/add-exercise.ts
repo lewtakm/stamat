@@ -8,12 +8,16 @@ export const addExercise = async (
   values: OmitMongoDefaultValues<ExerciseDocument>
 ) => {
   try {
+    console.log("values", values);
     await connectDB();
     const exercise = new Exercise(values);
     console.log("exercise", exercise);
     await exercise.save();
     return {
-      success: { id: exercise._id, message: "Zadanie zostało dodane." },
+      success: {
+        id: exercise._id.toString(),
+        message: "Zadanie zostało dodane.",
+      },
     };
   } catch (e) {
     logger(e);

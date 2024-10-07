@@ -1,5 +1,5 @@
 import { Button } from "@/components";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui";
 import { CheckCircle, Star, TrendingUp, Users, Video } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";

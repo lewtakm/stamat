@@ -79,6 +79,11 @@ const AddExercise = () => {
     try {
       setIsLoading(true);
 
+      const test = {
+        ...restData,
+        level: Number(level.value),
+      };
+      console.log("test", test);
       const response = await addExercise({
         ...restData,
         level: Number(level.value),

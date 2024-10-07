@@ -4,6 +4,7 @@ export * from "./Button";
 export * from "./Card";
 export * from "./ClickOutside";
 export * from "./ExcerciseRenderer";
+export * from "./ExerciseTable";
 export * from "./Forms";
 export * from "./Header";
 export * from "./Sidebar";

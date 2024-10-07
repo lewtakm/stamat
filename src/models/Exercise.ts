@@ -6,7 +6,7 @@ export enum ExcerciseLevels {
   MEDIUM = 2,
 }
 
-const ExerciseSchema = new Schema<ExerciseDocument>(
+export const ExerciseSchema = new Schema<ExerciseDocument>(
   {
     category: {
       default: 1,
@@ -26,6 +26,11 @@ const ExerciseSchema = new Schema<ExerciseDocument>(
         required: [true, "Opis zadania jest wymagany."],
         type: String,
       },
+    },
+    level: {
+      default: 2,
+      required: [true, "Poziom zadania jest wymagany."],
+      type: Number,
     },
     subExercises: [
       {
